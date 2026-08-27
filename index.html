@@ -902,7 +902,54 @@ footer p{
     </div>
 
 </section>
+<section id="grade1Subjects" class="grade1-page" style="display:none;">
 
+    <div class="section-title">
+        <h2>🎓 Grade 1 <span>Courses</span></h2>
+        <p>Choose your course and start learning.</p>
+    </div>
+
+    <div class="grade1-subjects">
+
+        <div class="grade1-subject">
+            <div class="grade1-subject-icon">🧮</div>
+            <h3>Mathematics</h3>
+            <p>Grade 1 Mathematics</p>
+        </div>
+
+        <div class="grade1-subject">
+            <div class="grade1-subject-icon">📘</div>
+            <h3>English</h3>
+            <p>Grade 1 English</p>
+        </div>
+
+        <div class="grade1-subject">
+            <div class="grade1-subject-icon">🔤</div>
+            <h3>Amharic</h3>
+            <p>Grade 1 Amharic</p>
+        </div>
+
+        <div class="grade1-subject">
+            <div class="grade1-subject-icon">🌱</div>
+            <h3>Environmental Science</h3>
+            <p>Grade 1 Environmental Science</p>
+        </div>
+
+        <div class="grade1-subject">
+            <div class="grade1-subject-icon">🌿</div>
+            <h3>Wolaitic</h3>
+            <p>Grade 1 Wolaitic</p>
+        </div>
+
+        <div class="grade1-subject">
+            <div class="grade1-subject-icon">🗣️</div>
+            <h3>Spoken English</h3>
+            <p>Grade 1 Spoken English</p>
+        </div>
+
+    </div>
+
+</section>
 
 <!-- ================= GRADE 1 SUBJECTS ================= -->
 
@@ -2008,6 +2055,13 @@ function showContent(type){
 
     }
 
+}function openGrade1(){
+
+    document.getElementById("grade1Subjects").style.display = "block";
+
+    document.getElementById("grade1Subjects").scrollIntoView({
+        behavior: "smooth"
+    });
 }
 
 </script>
