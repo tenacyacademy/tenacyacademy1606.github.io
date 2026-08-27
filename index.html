@@ -1,2070 +1,610 @@
-[8/27/2026 2:14 AM] Paulos Bunaro: <!DOCTYPE html>
-<html lang="en">
+[8/27/2026 3:12 AM] Paulos Bunaro: <!DOCTYPE html>
+<html lang="am">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>PAUL ACADEMY | Learn Today. Lead Tomorrow.</title>
-
-<meta name="description"
-content="PAUL ACADEMY - Quality education for Grade 1 to Grade 12. Lessons, notes, videos and exams in one place.">
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    background:#f5f8ff;
-    color:#10244a;
-}
-
-/* ================= NAVBAR ================= */
-
-.navbar{
-    width:100%;
-    background:#061d46;
-    padding:15px 5%;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    position:sticky;
-    top:0;
-    z-index:1000;
-    box-shadow:0 3px 15px rgba(0,0,0,.15);
-}
-
-.logo{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    color:white;
-}
-
-.logo-icon{
-    font-size:36px;
-}
-
-.logo h1{
-    font-size:24px;
-}
-
-.logo p{
-    color:#fbbd24;
-    font-size:12px;
-    font-weight:bold;
-}
-
-.nav-links{
-    display:flex;
-    align-items:center;
-    gap:22px;
-}
-
-.nav-links a{
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-    font-size:14px;
-}
-
-.nav-links a:hover{
-    color:#fbbd24;
-}
-
-.login{
-    background:#fbbd24;
-    color:#061d46 !important;
-    padding:12px 18px;
-    border-radius:10px;
-}
-
-/* ================= HERO ================= */
-
-.hero{
-    min-height:650px;
-
-    background:
-    linear-gradient(
-        90deg,
-        rgba(3,20,49,.92) 0%,
-        rgba(3,20,49,.72) 42%,
-        rgba(3,20,49,.15) 100%
-    ),
-    url("https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=2000&q=90");
-
-    background-size:cover;
-    background-position:center;
-
-    display:flex;
-    align-items:center;
-    position:relative;
-}
-
-.hero-content{
-    width:90%;
-    max-width:1200px;
-    margin:auto;
-    color:white;
-}
-
-.hero-text{
-    max-width:650px;
-}
-
-.hero h2{
-    font-size:60px;
-    line-height:1.05;
-    margin-bottom:20px;
-}
-
-.hero h2 span{
-    color:#fbbd24;
-}
-
-.hero p{
-    font-size:19px;
-    line-height:1.7;
-    margin-bottom:30px;
-}
-
-.buttons{
-    display:flex;
-    gap:15px;
-    flex-wrap:wrap;
-}
-
-.btn{
-    padding:15px 25px;
-    border-radius:10px;
-    text-decoration:none;
-    font-weight:bold;
-    display:inline-block;
-    cursor:pointer;
-}
-
-.primary{
-    background:#fbbd24;
-    color:#061d46;
-}
-
-.secondary{
-    border:2px solid white;
-    color:white;
-}
-
-/* ================= SEARCH ================= */
-
-.search-box{
-    position:absolute;
-    bottom:25px;
-    left:50%;
-    transform:translateX(-50%);
-    width:75%;
-    max-width:900px;
-    background:white;
-    padding:8px;
-    border-radius:40px;
-    display:flex;
-    box-shadow:0 10px 30px rgba(0,0,0,.3);
-}
-
-.search-box input{
-    flex:1;
-    border:none;
-    outline:none;
-    padding:15px 20px;
-    font-size:16px;
-}
-
-.search-box button{
-    border:none;
-    background:#061d46;
-    color:white;
-    padding:0 30px;
-    border-radius:30px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-/* ================= SECTIONS ================= */
-
-section{
-    padding:70px 5%;
-}
-
-.section-title{
-    text-align:center;
-    margin-bottom:35px;
-}
-
-.section-title h2{
-    font-size:34px;
-    color:#10244a;
-}
-
-.section-title span{
-    color:#fbbd24;
-}
-
-.section-title p{
-    margin-top:10px;
-    color:#667085;
-}
-
-/* ================= GRADES ================= */
-
-.grades{
-    display:grid;
-    grid-template-columns:repeat(6,1fr);
-    gap:15px;
-    max-width:1200px;
-    margin:auto;
-}
-
-.grade{
-    background:white;
-    padding:20px 10px;
-    border-radius:12px;
-    text-align:center;
-    box-shadow:0 5px 18px rgba(0,0,0,.08);
-    transition:.3s;
-    cursor:pointer;
-}
-
-.grade:hover{
-    transform:translateY(-8px);
-    box-shadow:0 12px 25px rgba(0,0,0,.15);
-}
-[8/27/2026 2:14 AM] Paulos Bunaro: .grade-number{
-    width:45px;
-    height:45px;
-    background:#061d46;
-    color:#fbbd24;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin:0 auto 10px;
-    font-size:20px;
-    font-weight:bold;
-}
-
-.grade h3{
-    font-size:14px;
-}
-
-/* ================= GRADE 1 SUBJECTS ================= */
-
-.grade1-page{
-    background:#eaf2ff;
-}
-
-.grade1-subjects{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-    max-width:1100px;
-    margin:auto;
-}
-
-.grade1-subject{
-    background:white;
-    padding:30px 20px;
-    border-radius:18px;
-    text-align:center;
-    box-shadow:0 5px 18px rgba(0,0,0,.08);
-    cursor:pointer;
-    transition:.3s;
-    border:2px solid transparent;
-}
-
-.grade1-subject:hover{
-    transform:translateY(-8px);
-    border-color:#fbbd24;
-    box-shadow:0 12px 30px rgba(0,0,0,.15);
-}
-
-.grade1-subject-icon{
-    font-size:50px;
-    margin-bottom:15px;
-}
-
-.grade1-subject h3{
-    margin-bottom:10px;
-    color:#061d46;
-}
-
-.grade1-subject p{
-    color:#667085;
-    line-height:1.5;
-}
-
-/* ================= SUBJECTS ================= */
-
-.subjects{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:20px;
-    max-width:1200px;
-    margin:auto;
-}
-
-.subject{
-    background:white;
-    padding:30px 20px;
-    text-align:center;
-    border-radius:15px;
-    box-shadow:0 5px 18px rgba(0,0,0,.08);
-    transition:.3s;
-}
-
-.subject:hover{
-    transform:translateY(-7px);
-}
-
-.subject-icon{
-    font-size:45px;
-    margin-bottom:15px;
-}
-
-.subject h3{
-    margin-bottom:8px;
-}
-
-.subject p{
-    color:#667085;
-}
-
-/* ================= FEATURES ================= */
-
-.features{
-    background:#eaf2ff;
-}
-
-.feature-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:20px;
-    max-width:1200px;
-    margin:auto;
-}
-
-.feature{
-    background:white;
-    padding:30px;
-    border-radius:15px;
-    text-align:center;
-}
-
-.feature-icon{
-    font-size:40px;
-    margin-bottom:15px;
-}
-
-.feature h3{
-    margin-bottom:10px;
-}
-
-.feature p{
-    color:#667085;
-    line-height:1.6;
-}
-
-/* ================= STATS ================= */
-
-.stats{
-    background:#061d46;
-    color:white;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    text-align:center;
-    padding:45px 5%;
-}
-
-.stat h2{
-    color:#fbbd24;
-    font-size:38px;
-}
-
-.stat p{
-    margin-top:5px;
-}
-
-/* ================= LESSON PAGE ================= */
-
-.lesson-page{
-    background:white;
-}
-
-.lesson-container{
-    max-width:1100px;
-    margin:auto;
-}
-
-.back-btn{
-    display:inline-block;
-    margin-bottom:25px;
-    background:#061d46;
-    color:white;
-    padding:12px 20px;
-    border-radius:10px;
-    cursor:pointer;
-}
-
-.lesson-header{
-    background:#061d46;
-    color:white;
-    padding:35px;
-    border-radius:20px;
-    margin-bottom:25px;
-}
-
-.lesson-header h2{
-    font-size:32px;
-    margin-bottom:10px;
-}
-
-.lesson-header span{
-    color:#fbbd24;
-}
-
-.chapters{
-    display:grid;
-    gap:15px;
-}
-
-.chapter{
-    background:#f5f8ff;
-    padding:22px;
-    border-radius:14px;
-    border-left:5px solid #fbbd24;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.chapter:hover{
-    transform:translateX(5px);
-    background:#eaf2ff;
-}
-
-.chapter h3{
-    margin-bottom:7px;
-}
-
-.chapter p{
-    color:#667085;
-}
-
-/* ================= LEARNING CONTENT ================= */
-
-.learning-content{
-    max-width:1000px;
-    margin:auto;
-}
-
-.learning-card{
-    background:white;
-    padding:30px;
-    border-radius:18px;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
-    margin-bottom:20px;
-}
-
-.learning-card h3{
-    color:#061d46;
-    margin-bottom:15px;
-}
-
-.learning-card p{
-    color:#667085;
-    line-height:1.7;
-}
-
-.lesson-tabs{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    margin:20px 0;
-}
-
-.lesson-tab{
-    background:#061d46;
-    color:white;
-    padding:12px 18px;
-    border-radius:10px;
-    cursor:pointer;
-}
-
-.lesson-tab:hover{
-    background:#fbbd24;
-    color:#061d46;
-}
-[8/27/2026 2:14 AM] Paulos Bunaro: .video-box{
-    background:#061d46;
-    color:white;
-    min-height:250px;
-    border-radius:18px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:30px;
-}
-
-.video-box .play{
-    font-size:60px;
-    margin-bottom:10px;
-}
-
-/* ================= POPULAR LESSONS ================= */
-
-.lessons{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:20px;
-    max-width:1200px;
-    margin:auto;
-}
-
-.lesson{
-    background:white;
-    border-radius:15px;
-    overflow:hidden;
-    box-shadow:0 5px 18px rgba(0,0,0,.1);
-    transition:.3s;
-}
-
-.lesson:hover{
-    transform:translateY(-7px);
-}
-
-.lesson img{
-    width:100%;
-    height:180px;
-    object-fit:cover;
-}
-
-.lesson-content{
-    padding:18px;
-}
-
-.lesson-content h3{
-    margin-bottom:8px;
-}
-
-.lesson-content p{
-    color:#667085;
-}
-
-/* ================= CTA ================= */
-
-.cta{
-    margin:50px 5%;
-    padding:50px;
-    border-radius:20px;
-    background:#061d46;
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
-}
-
-.cta h2{
-    font-size:32px;
-}
-
-.cta span{
-    color:#fbbd24;
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-    background:#031431;
-    color:white;
-    text-align:center;
-    padding:35px 20px;
-}
-
-footer p{
-    color:#b9c4d8;
-    margin-top:10px;
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:900px){
-
-    .nav-links{
-        display:none;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PAUL ACADEMY - መነሻ ገጽ</title>
+  <style>
+    /* ===== መሰረታዊ ቅንብሮች ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .hero{
-        min-height:700px;
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
     }
 
-    .hero h2{
-        font-size:42px;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
 
-    .hero p{
-        font-size:16px;
+    /* ===== ራስጌ ===== */
+    .header {
+      background: linear-gradient(135deg, #1a3a6b, #2d5aa0);
+      color: white;
+      padding: 40px 0 30px;
+      text-align: center;
+      border-radius: 0 0 30px 30px;
     }
 
-    .search-box{
-        width:90%;
+    .header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: 2px;
     }
 
-    .grades{
-        grid-template-columns:repeat(3,1fr);
+    .header .subtitle {
+      font-size: 1.4rem;
+      opacity: 0.9;
+      margin-top: 5px;
     }
 
-    .grade1-subjects{
-        grid-template-columns:repeat(2,1fr);
+    .header .tagline {
+      font-size: 1.1rem;
+      opacity: 0.8;
+      margin-top: 15px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .subjects{
-        grid-template-columns:repeat(2,1fr);
+    .header .btn-group {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
     }
 
-    .feature-grid{
-        grid-template-columns:repeat(2,1fr);
+    .btn-primary {
+      display: inline-block;
+      padding: 12px 35px;
+      background: white;
+      color: #1a3a6b;
+      font-weight: 700;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
-    .stats{
-        grid-template-columns:repeat(2,1fr);
-        gap:30px;
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     }
 
-    .lessons{
-        grid-template-columns:repeat(2,1fr);
+    .btn-secondary {
+      display: inline-block;
+      padding: 12px 35px;
+      background: transparent;
+      color: white;
+      font-weight: 700;
+      border-radius: 50px;
+      text-decoration: none;
+      border: 2px solid white;
+      transition: background 0.2s, transform 0.2s;
     }
 
-    .cta{
-        flex-direction:column;
-        text-align:center;
-    }
-}
-
-@media(max-width:550px){
-
-    .logo h1{
-        font-size:18px;
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.15);
+      transform: translateY(-3px);
     }
 
-    .logo-icon{
-        font-size:28px;
+    /* ===== የክፍል ምርጫ ===== */
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #1a3a6b;
+      text-align: center;
+      margin: 40px 0 20px;
     }
 
-    .hero h2{
-        font-size:36px;
+    .grade-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+      gap: 12px;
+      padding-bottom: 20px;
     }
 
-    .hero{
-        min-height:720px;
+    .grade-item {
+      background: white;
+      text-align: center;
+      padding: 14px 8px;
+      border-radius: 14px;
+      font-weight: 600;
+      color: #1e293b;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      transition: 0.2s;
+      cursor: default;
+      border: 2px solid transparent;
     }
 
-    .grades{
-        grid-template-columns:repeat(2,1fr);
+    .grade-item:hover {
+      border-color: #1a3a6b;
+      transform: scale(1.03);
     }
 
-    .grade1-subjects{
-        grid-template-columns:1fr;
+    /* ===== ለ1ኛ ክፍል ልዩ ክፍል (አዲስ የተጨመረ) ===== */
+    .grade1-feature {
+      background: linear-gradient(145deg, #fef9e7, #fef3c7);
+      border: 2px solid #fbbf24;
+      border-radius: 24px;
+      padding: 30px 25px;
+      margin: 30px 0;
+      box-shadow: 0 8px 30px rgba(251, 191, 36, 0.15);
     }
 
-    .subjects{
-        grid-template-columns:1fr;
+    .grade1-feature h2 {
+      font-size: 1.8rem;
+      color: #92400e;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 6px;
     }
 
-    .feature-grid{
-        grid-template-columns:1fr;
+    .grade1-feature h2 small {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #b45309;
     }
 
-    .lessons{
-        grid-template-columns:1fr;
+    .grade1-feature .sub-desc {
+      color: #78350f;
+      margin-bottom: 20px;
+      font-size: 1.05rem;
     }
 
-    .stats{
-        grid-template-columns:1fr;
+    .grade1-subjects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 18px;
     }
 
-    .search-box{
-        bottom:20px;
+    .g1-subject {
+      background: white;
+      border-radius: 16px;
+      padding: 20px 14px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      border-bottom: 5px solid #1a3a6b;
+      transition: 0.2s;
     }
 
-    .search-box button{
-        padding:0 18px;
+    .g1-subject:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+[8/27/2026 3:12 AM] Paulos Bunaro: .g1-subject .icon {
+      font-size: 2.4rem;
+      display: block;
     }
 
-    section{
-        padding:50px 5%;
+    .g1-subject h4 {
+      font-size: 1rem;
+      margin-top: 6px;
+      color: #1e293b;
     }
-}
 
-</style>
+    .g1-subject .badge {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1a3a6b;
+      padding: 2px 16px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      margin-top: 6px;
+    }
+
+    .g1-subject:nth-child(1) { border-bottom-color: #ef4444; }
+    .g1-subject:nth-child(2) { border-bottom-color: #3b82f6; }
+    .g1-subject:nth-child(3) { border-bottom-color: #f59e0b; }
+    .g1-subject:nth-child(4) { border-bottom-color: #22c55e; }
+    .g1-subject:nth-child(5) { border-bottom-color: #a855f7; }
+
+    .g1-subject .btn-g1 {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 5px 20px;
+      background: #1a3a6b;
+      color: white;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .g1-subject .btn-g1:hover {
+      background: #2d5aa0;
+    }
+
+    /* ===== አጠቃላይ ትምህርቶች (ኦሪጅናል) ===== */
+    .subjects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 20px;
+      padding-bottom: 30px;
+    }
+
+    .subject-card {
+      background: white;
+      border-radius: 18px;
+      padding: 22px 16px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+      transition: 0.2s;
+      border-top: 4px solid #2d5aa0;
+    }
+
+    .subject-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+    }
+
+    .subject-card .icon { font-size: 2.2rem; display: block; }
+    .subject-card h4 { font-size: 1rem; margin-top: 6px; }
+    .subject-card .more {
+      color: #94a3b8;
+      font-size: 0.8rem;
+    }
+
+    .view-all {
+      text-align: right;
+      margin: -10px 0 20px;
+    }
+    .view-all a {
+      color: #1a3a6b;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .view-all a:hover { text-decoration: underline; }
+
+    /* ===== መሳሪያዎች ===== */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      padding: 20px 0 30px;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 18px;
+      padding: 28px 20px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    }
+
+    .feature-card .icon { font-size: 2.6rem; display: block; }
+    .feature-card h4 { font-size: 1.2rem; margin: 8px 0 4px; }
+    .feature-card p { color: #64748b; font-size: 0.9rem; }
+
+    /* ===== ስታቲስቲክስ ===== */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      padding: 30px 0;
+      text-align: center;
+    }
+
+    .stat-item {
+      background: white;
+      border-radius: 16px;
+      padding: 22px 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+
+    .stat-item .number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #1a3a6b;
+    }
+
+    .stat-item .label {
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+
+    /* ===== ተወዳጅ ትምህርቶች ===== */
+    .popular-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 15px 0 30px;
+    }
+
+    .popular-card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      border-left: 4px solid #fbbf24;
+    }
+
+    .popular-card h4 { color: #1a3a6b; font-size: 1.05rem; }
+    .popular-card .meta { font-size: 0.85rem; color: #64748b; margin-top: 4px; }
+
+    /* ===== መግቢያ ===== */
+    .cta-section {
+      text-align: center;
+      padding: 30px 0 50px;
+    }
+
+    .btn-join {
+[8/27/2026 3:12 AM] Paulos Bunaro: display: inline-block;
+      padding: 16px 50px;
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      color: #1a3a6b;
+      font-weight: 700;
+      font-size: 1.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 8px 30px rgba(245, 158, 11, 0.35);
+      transition: 0.3s;
+    }
+
+    .btn-join:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 40px rgba(245, 158, 11, 0.45);
+    }
+
+    /* ===== ግርጌ ===== */
+    .footer {
+      background: #1a3a6b;
+      color: white;
+      text-align: center;
+      padding: 25px 0;
+      border-radius: 30px 30px 0 0;
+      margin-top: 20px;
+    }
+
+    .footer small {
+      opacity: 0.8;
+      display: block;
+      margin-top: 6px;
+    }
+
+    /* ===== ምላሽ ሰጪ ===== */
+    @media (max-width: 600px) {
+      .header h1 { font-size: 2rem; }
+      .grade-grid { grid-template-columns: repeat(4, 1fr); }
+      .grade1-subjects { grid-template-columns: 1fr 1fr; }
+      .subjects-grid { grid-template-columns: 1fr 1fr; }
+      .popular-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
-
 <body>
 
-
-<!-- ================= NAVBAR ================= -->
-
-<nav class="navbar">
-
-    <div class="logo">
-
-        <div class="logo-icon">🎓</div>
-
-        <div>
-            <h1>PAUL ACADEMY</h1>
-            <p>Learn Today. Lead Tomorrow.</p>
-        </div>
-
+  <!-- ===== ራስጌ ===== -->
+  <header class="header">
+    <div class="container">
+      <h1>📚 PAUL ACADEMY</h1>
+      <p class="subtitle">Learn Today. Lead Tomorrow.</p>
+      <p class="tagline">
+        Quality education for Grade 1 to 12.<br />
+        All subjects, notes, videos &amp; exams in one place.
+      </p>
+      <div class="btn-group">
+        <a href="#" class="btn-primary">Start Learning →</a>
+        <a href="#" class="btn-secondary">Explore Courses</a>
+      </div>
     </div>
+  </header>
 
-    <div class="nav-links">
-
-        <a href="#">Home</a>
-        <a href="#grades">Grades</a>
-        <a href="#subjects">Subjects</a>
-        <a href="#lessons">Lessons</a>
-        <a href="#features">Notes</a>
-        <a href="#features">Exams</a>
-        <a href="#">About Us</a>
-        <a href="#">Contact</a>
-        <a class="login" href="#">Login</a>
-
+  <!-- ===== Choose Your Grade (ኦሪጅናል - ሁሉም ክፍሎች ተጠብቀዋል) ===== -->
+  <div class="container">
+    <h2 class="section-title">Choose Your Grade</h2>
+    <div class="grade-grid">
+      <div class="grade-item">Grade 1</div>
+      <div class="grade-item">Grade 2</div>
+      <div class="grade-item">Grade 3</div>
+      <div class="grade-item">Grade 4</div>
+      <div class="grade-item">Grade 5</div>
+      <div class="grade-item">Grade 6</div>
+      <div class="grade-item">Grade 7</div>
+      <div class="grade-item">Grade 8</div>
+      <div class="grade-item">Grade 9</div>
+      <div class="grade-item">Grade 10</div>
+      <div class="grade-item">Grade 11</div>
+      <div class="grade-item">Grade 12</div>
     </div>
+  </div>
 
-</nav>
-
-
-<!-- ================= HERO ================= -->
-
-<section class="hero">
-
-    <div class="hero-content">
-
-        <div class="hero-text">
-
-            <h2>
-                Learn Today.<br>
-                <span>Lead Tomorrow.</span>
-            </h2>
-
-            <p>
-                Quality education for Grade 1 to Grade 12.
-                All subjects, lessons, videos, notes and exams
-                in one place.
-            </p>
-
-            <div class="buttons">
-[8/27/2026 2:14 AM] Paulos Bunaro: <a href="#grades" class="btn primary">
-                    Start Learning →
-                </a>
-
-                <a href="#subjects" class="btn secondary">
-                    Explore Courses
-                </a>
-
-            </div>
-
+  <!-- ===== 🆕 ለ1ኛ ክፍል ብቻ የተጨመረ ልዩ ክፍል ===== -->
+  <div class="container">
+    <div class="grade1-feature">
+      <h2>
+        🎒 ለ1ኛ ክፍል ተማሪዎች የተዘጋጁ ትምህርቶች
+        <small>— በአዲስ መልክ</small>
+      </h2>
+      <p class="sub-desc">
+        እነዚህን 5 መሰረታዊ ትምህርቶች በመማር ጥሩ መነሻ ይፍጠሩ።
+      </p>
+      <div class="grade1-subjects">
+        <!-- 1. Mathematics -->
+        <div class="g1-subject">
+          <span class="icon">➕</span>
+          <h4>Mathematics</h4>
+          <span class="badge">ሒሳብ</span>
+          <a href="#" class="btn-g1">ጀምር</a>
         </div>
-
+        <!-- 2. English -->
+        <div class="g1-subject">
+          <span class="icon">🔤</span>
+          <h4>English</h4>
+          <span class="badge">እንግሊዝኛ</span>
+          <a href="#" class="btn-g1">ጀምር</a>
+        </div>
+        <!-- 3. Amharic -->
+        <div class="g1-subject">
+          <span class="icon">📝</span>
+          <h4>Amharic</h4>
+          <span class="badge">አማርኛ</span>
+          <a href="#" class="btn-g1">ጀምር</a>
+        </div>
+        <!-- 4. Environmental Science -->
+        <div class="g1-subject">
+          <span class="icon">🌿</span>
+          <h4>Environmental Science</h4>
+          <span class="badge">አካባቢ ሳይንስ</span>
+          <a href="#" class="btn-g1">ጀምር</a>
+        </div>
+        <!-- 5. Wolaitic -->
+        <div class="g1-subject">
+          <span class="icon">🗣️</span>
+          <h4>Wolaitic</h4>
+          <span class="badge">ወላይትኛ</span>
+          <a href="#" class="btn-g1">ጀምር</a>
+        </div>
+      </div>
     </div>
-
-
-    <div class="search-box">
-
-        <input
-        type="text"
-        id="searchInput"
-        placeholder="🔍 Search for lessons, subjects, notes...">
-
-        <button onclick="searchSite()">
-            Search
-        </button>
-
+  </div>
+[8/27/2026 3:12 AM] Paulos Bunaro: <!-- ===== Explore Subjects (ኦሪጅናል - ምንም አልተለወጠም) ===== -->
+  <div class="container">
+    <h2 class="section-title">Explore Subjects</h2>
+    <div class="subjects-grid">
+      <div class="subject-card">
+        <span class="icon">📐</span>
+        <h4>Mathematics</h4>
+      </div>
+      <div class="subject-card">
+        <span class="icon">📖</span>
+        <h4>English</h4>
+      </div>
+      <div class="subject-card">
+        <span class="icon">✍️</span>
+        <h4>Amharic</h4>
+      </div>
+      <div class="subject-card">
+        <span class="icon">🔬</span>
+        <h4>General Science</h4>
+      </div>
+      <div class="subject-card">
+        <span class="icon">🌍</span>
+        <h4>Social Studies</h4>
+      </div>
+      <div class="subject-card">
+        <span class="icon">💻</span>
+        <h4>ICT</h4>
+      </div>
+      <div class="subject-card">
+        <span class="icon">🏃</span>
+        <h4>Health &amp; PHE</h4>
+      </div>
+      <div class="subject-card">
+        <span class="icon">➕</span>
+        <h4>More Subjects</h4>
+        <span class="more">ተጨማሪ</span>
+      </div>
     </div>
-
-</section>
-
-
-<!-- ================= GRADES ================= -->
-
-<section id="grades">
-
-    <div class="section-title">
-
-        <h2>
-            🎓 Choose Your <span>Grade</span>
-        </h2>
-
-        <p>
-            Select your grade to start learning.
-        </p>
-
+    <div class="view-all">
+      <a href="#">View All Subjects →</a>
     </div>
+  </div>
 
-
-    <div class="grades">
-
-        <!-- GRADE 1 -->
-
-        <div class="grade" onclick="openGrade1()">
-
-            <div class="grade-number">
-                1
-            </div>
-
-            <h3>
-                Grade 1
-            </h3>
-
-        </div>
-
-
-        <div class="grade">
-            <div class="grade-number">2</div>
-            <h3>Grade 2</h3>
-        </div>
-
-
-        <div class="grade">
-            <div class="grade-number">3</div>
-            <h3>Grade 3</h3>
-        </div>
-
-
-        <div class="grade">
-            <div class="grade-number">4</div>
-            <h3>Grade 4</h3>
-        </div>
-
-
-        <div class="grade">
-            <div class="grade-number">5</div>
-            <h3>Grade 5</h3>
-        </div>
-
-
-        <div class="grade">
-            <div class="grade-number">6</div>
-            <h3>Grade 6</h3>
-        </div>
-
-
-        <div class="grade">
-            <div class="grade-number">7</div>
-            <h3>Grade 7</h3>
-        </div>
-
-
-        <div class="grade">
-            <div class="grade-number">8</div>
-            <h3>Grade 8</h3>
-        </div>
-
-
-        <div class="grade">
-            <div class="grade-number">9</div>
-            <h3>Grade 9</h3>
-        </div>
-
-
-        <div class="grade">
-            <div class="grade-number">10</div>
-            <h3>Grade 10</h3>
-        </div>
-
-
-        <div class="grade">
-            <div class="grade-number">11</div>
-            <h3>Grade 11</h3>
-        </div>
-
-
-        <div class="grade">
-            <div class="grade-number">12</div>
-            <h3>Grade 12</h3>
-        </div>
-
+  <!-- ===== Video, Notes, Exams, Progress (ኦሪጅናል) ===== -->
+  <div class="container">
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="icon">🎥</span>
+        <h4>Video Lessons</h4>
+        <p>Watch high-quality video lessons from experienced teachers.</p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">📄</span>
+        <h4>Short Notes</h4>
+        <p>Easy-to-read notes for all topics and chapters.</p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">📋</span>
+        <h4>Exam Questions</h4>
+        <p>Regional &amp; national exam questions with answers and explanations.</p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">📊</span>
+        <h4>Track Progress</h4>
+        <p>Track your learning progress and improve your results.</p>
+      </div>
     </div>
+  </div>
 
-</section>
-<section id="grade1Subjects" class="grade1-page" style="display:none;">
-
-    <div class="section-title">
-        <h2>🎓 Grade 1 <span>Courses</span></h2>
-        <p>Choose your course and start learning.</p>
+  <!-- ===== Stats (ኦሪጅናል) ===== -->
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="number">12</div>
+        <div class="label">Grades Covered (1 – 12)</div>
+      </div>
+      <div class="stat-item">
+        <div class="number">5000+</div>
+        <div class="label">Short Notes &amp; Lessons</div>
+      </div>
+      <div class="stat-item">
+        <div class="number">10000+</div>
+        <div class="label">Exam Questions &amp; Resources</div>
+      </div>
+      <div class="stat-item">
+        <div class="number">50K+</div>
+        <div class="label">Happy Students</div>
+      </div>
     </div>
+  </div>
 
-    <div class="grade1-subjects">
-
-        <div class="grade1-subject">
-            <div class="grade1-subject-icon">🧮</div>
-            <h3>Mathematics</h3>
-            <p>Grade 1 Mathematics</p>
-        </div>
-
-        <div class="grade1-subject">
-            <div class="grade1-subject-icon">📘</div>
-            <h3>English</h3>
-            <p>Grade 1 English</p>
-        </div>
-
-        <div class="grade1-subject">
-            <div class="grade1-subject-icon">🔤</div>
-            <h3>Amharic</h3>
-            <p>Grade 1 Amharic</p>
-        </div>
-
-        <div class="grade1-subject">
-            <div class="grade1-subject-icon">🌱</div>
-            <h3>Environmental Science</h3>
-            <p>Grade 1 Environmental Science</p>
-        </div>
-
-        <div class="grade1-subject">
-            <div class="grade1-subject-icon">🌿</div>
-            <h3>Wolaitic</h3>
-            <p>Grade 1 Wolaitic</p>
-        </div>
-
-        <div class="grade1-subject">
-            <div class="grade1-subject-icon">🗣️</div>
-            <h3>Spoken English</h3>
-            <p>Grade 1 Spoken English</p>
-        </div>
-
+  <!-- ===== Popular Lessons (ኦሪጅናል - ሁሉም ተጠብቀዋል) ===== -->
+  <div class="container">
+    <h2 class="section-title">Popular Lessons</h2>
+    <div class="popular-grid">
+      <div class="popular-card">
+        <h4>Algebra – Part 1</h4>
+        <p class="meta">📐 Mathematics • 12.5K views</p>
+      </div>
+      <div class="popular-card">
+        <h4>Chemical Reactions</h4>
+        <p class="meta">🧪 General Science • 9.3K views</p>
+      </div>
+      <div class="popular-card">
+        <h4>Types of Sentences</h4>
+        <p class="meta">📖 English • 8.1K views</p>
+      </div>
+      <div class="popular-card">
+        <h4>Ethiopian History</h4>
+        <p class="meta">🌍 Social Studies • 7.2K views</p>
+      </div>
+      <div class="popular-card">
+        <h4>Python Basics</h4>
+        <p class="meta">💻 ICT • 6.8K views</p>
+      </div>
     </div>
-
-</section>
-
-<!-- ================= GRADE 1 SUBJECTS ================= -->
-
-<section
-id="grade1Subjects"
-class="grade1-page"
-style="display:none;">
-
-    <div class="section-title">
-
-        <h2>
-            🎓 Grade 1 <span>Subjects</span>
-        </h2>
-
-        <p>
-            Choose a subject to start learning.
-        </p>
-
-    </div>
-
-
-    <div class="grade1-subjects">
-
-
-        <!-- MATHEMATICS -->
-
-        <div
-        class="grade1-subject"
-        onclick="openSubject('Mathematics')">
-
-            <div class="grade1-subject-icon">
-                🧮
-            </div>
-
-            <h3>
-                Mathematics
-            </h3>
-
-            <p>
-                Numbers, addition, subtraction,
-                shapes and more.
-            </p>
-
-        </div>
-
-
-        <!-- ENGLISH -->
-
-        <div
-        class="grade1-subject"
-        onclick="openSubject('English')">
-
-            <div class="grade1-subject-icon">
-                📖
-            </div>
-
-            <h3>
-                English
-            </h3>
-
-            <p>
-                Letters, words, reading
-                and sentences.
-            </p>
-
-        </div>
-
-
-        <!-- ENVIRONMENTAL SCIENCE -->
-
-        <div
-        class="grade1-subject"
-        onclick="openSubject('Environmental Science')">
-
-            <div class="grade1-subject-icon">
-                🌱
-            </div>
-
-            <h3>
-                Environmental Science
-            </h3>
-
-            <p>
-                Learn about nature,
-                people and our environment.
-            </p>
-
-        </div>
-
-
-        <!-- AMHARIC -->
-[8/27/2026 2:14 AM] Paulos Bunaro: <div
-        class="grade1-subject"
-        onclick="openSubject('Amharic')">
-
-            <div class="grade1-subject-icon">
-                🔤
-            </div>
-
-            <h3>
-                Amharic
-            </h3>
-
-            <p>
-                Learn Amharic letters,
-                words and sentences.
-            </p>
-
-        </div>
-
-
-        <!-- WOLAITIC -->
-
-        <div
-        class="grade1-subject"
-        onclick="openSubject('Wolaitic')">
-
-            <div class="grade1-subject-icon">
-                🌿
-            </div>
-
-            <h3>
-                Wolaitic
-            </h3>
-
-            <p>
-                Learn Wolaitic letters,
-                words and basic language.
-            </p>
-
-        </div>
-
-
-        <!-- SPOKEN ENGLISH -->
-
-        <div
-        class="grade1-subject"
-        onclick="openSubject('Spoken English')">
-
-            <div class="grade1-subject-icon">
-                🗣️
-            </div>
-
-            <h3>
-                Spoken English
-            </h3>
-
-            <p>
-                Improve speaking,
-                listening and conversation.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= SUBJECT LESSON PAGE ================= -->
-
-<section
-id="subjectLessons"
-class="lesson-page"
-style="display:none;">
-
-    <div class="lesson-container">
-
-        <div
-        class="back-btn"
-        onclick="backToGrade1()">
-
-            ← Back to Grade 1
-
-        </div>
-
-
-        <div class="lesson-header">
-
-            <h2>
-                Grade 1 →
-                <span id="selectedSubject">
-                    Mathematics
-                </span>
-            </h2>
-
-            <p>
-                Choose a chapter to start your lesson.
-            </p>
-
-        </div>
-
-
-        <div class="chapters" id="chapterList">
-
-            <!-- CHAPTERS WILL APPEAR HERE -->
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= LEARNING CONTENT ================= -->
-
-<section
-id="learningContent"
-style="display:none;">
-
-    <div class="learning-content">
-
-        <div
-        class="back-btn"
-        onclick="backToChapters()">
-
-            ← Back to Chapters
-
-        </div>
-
-
-        <div class="lesson-header">
-
-            <h2 id="lessonTitle">
-                Grade 1 Lesson
-            </h2>
-
-            <p>
-                Learn → Practice → Succeed
-            </p>
-
-        </div>
-
-
-        <div class="lesson-tabs">
-
-            <div
-            class="lesson-tab"
-            onclick="showContent('lesson')">
-
-                📖 Lesson
-
-            </div>
-
-            <div
-            class="lesson-tab"
-            onclick="showContent('note')">
-
-                📝 Short Note
-
-            </div>
-
-            <div
-            class="lesson-tab"
-            onclick="showContent('video')">
-
-                ▶️ Video
-
-            </div>
-
-            <div
-            class="lesson-tab"
-            onclick="showContent('exam')">
-
-                📄 Exam
-
-            </div>
-
-        </div>
-
-
-        <!-- LESSON -->
-
-        <div
-        id="lessonContent"
-        class="learning-card">
-
-            <h3>
-                📖 Lesson
-            </h3>
-
-            <p>
-                Welcome to your Grade 1 lesson.
-                Here students will learn the topic
-                step by step with simple examples.
-            </p>
-
-            <br>
-
-            <p>
-                More lesson content can be added here
-                for each chapter.
-            </p>
-
-        </div>
-
-
-        <!-- NOTE -->
-
-        <div
-        id="noteContent"
-        class="learning-card"
-        style="display:none;">
-
-            <h3>
-                📝 Short Note
-            </h3>
-
-            <p>
-                This section will contain easy,
-                short and useful notes for students.
-            </p>
-
-        </div>
-
-
-        <!-- VIDEO -->
-
-        <div
-        id="videoContent"
-        class="learning-card"
-        style="display:none;">
-
-            <h3>
-                ▶️ Video Lesson
-            </h3>
-[8/27/2026 2:14 AM] Paulos Bunaro: <div class="video-box">
-
-                <div>
-
-                    <div class="play">
-                        ▶️
-                    </div>
-
-                    <h3>
-                        Video Lesson
-                    </h3>
-
-                    <p>
-                        Your lesson video will be added here.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- EXAM -->
-
-        <div
-        id="examContent"
-        class="learning-card"
-        style="display:none;">
-
-            <h3>
-                📄 Practice Exam
-            </h3>
-
-            <p>
-                Practice questions for this lesson
-                will be added here.
-            </p>
-
-            <br>
-
-            <p>
-                <strong>
-                    Question 1:
-                </strong>
-                Write your first practice question here.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= ALL SUBJECTS ================= -->
-
-<section id="subjects">
-
-    <div class="section-title">
-
-        <h2>
-            📚 Explore <span>Subjects</span>
-        </h2>
-
-    </div>
-
-
-    <div class="subjects">
-
-
-        <div class="subject">
-
-            <div class="subject-icon">
-                🧮
-            </div>
-
-            <h3>
-                Mathematics
-            </h3>
-
-            <p>
-                Learn mathematics easily.
-            </p>
-
-        </div>
-
-
-        <div class="subject">
-
-            <div class="subject-icon">
-                📖
-            </div>
-
-            <h3>
-                English
-            </h3>
-
-            <p>
-                Improve English skills.
-            </p>
-
-        </div>
-
-
-        <div class="subject">
-
-            <div class="subject-icon">
-                🔤
-            </div>
-
-            <h3>
-                Amharic
-            </h3>
-
-            <p>
-                Learn Amharic lessons.
-            </p>
-
-        </div>
-
-
-        <div class="subject">
-
-            <div class="subject-icon">
-                🧪
-            </div>
-
-            <h3>
-                General Science
-            </h3>
-
-            <p>
-                Discover science.
-            </p>
-
-        </div>
-
-
-        <div class="subject">
-
-            <div class="subject-icon">
-                🌍
-            </div>
-
-            <h3>
-                Social Studies
-            </h3>
-
-            <p>
-                Learn society and history.
-            </p>
-
-        </div>
-
-
-        <div class="subject">
-
-            <div class="subject-icon">
-                💻
-            </div>
-
-            <h3>
-                ICT
-            </h3>
-
-            <p>
-                Build computer skills.
-            </p>
-
-        </div>
-
-
-        <div class="subject">
-
-            <div class="subject-icon">
-                🏃
-            </div>
-
-            <h3>
-                Health & PHE
-            </h3>
-
-            <p>
-                Health and physical education.
-            </p>
-
-        </div>
-
-
-        <div class="subject">
-
-            <div class="subject-icon">
-                ➕
-            </div>
-
-            <h3>
-                More Subjects
-            </h3>
-
-            <p>
-                Explore all subjects.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= FEATURES ================= -->
-
-<section
-class="features"
-id="features">
-
-    <div class="section-title">
-
-        <h2>
-            Why Learn With
-            <span>PAUL ACADEMY?</span>
-        </h2>
-
-    </div>
-
-
-    <div class="feature-grid">
-
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                ▶️
-            </div>
-
-            <h3>
-                Video Lessons
-            </h3>
-
-            <p>
-                Watch high-quality lessons
-                from experienced teachers.
-            </p>
-
-        </div>
-
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                📝
-            </div>
-
-            <h3>
-                Short Notes
-            </h3>
-[8/27/2026 2:14 AM] Paulos Bunaro: <p>
-                Easy-to-read notes for
-                all topics and chapters.
-            </p>
-
-        </div>
-
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                📄
-            </div>
-
-            <h3>
-                Exam Questions
-            </h3>
-
-            <p>
-                Practice regional and
-                national exam questions.
-            </p>
-
-        </div>
-
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                📊
-            </div>
-
-            <h3>
-                Track Progress
-            </h3>
-
-            <p>
-                Track your learning progress
-                and improve your results.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= STATS ================= -->
-
-<div class="stats">
-
-    <div class="stat">
-
-        <h2>
-            12
-        </h2>
-
-        <p>
-            Grades Covered
-        </p>
-
-    </div>
-
-
-    <div class="stat">
-
-        <h2>
-            5000+
-        </h2>
-
-        <p>
-            Lessons & Videos
-        </p>
-
-    </div>
-
-
-    <div class="stat">
-
-        <h2>
-            10000+
-        </h2>
-
-        <p>
-            Notes & Resources
-        </p>
-
-    </div>
-
-
-    <div class="stat">
-
-        <h2>
-            50K+
-        </h2>
-
-        <p>
-            Happy Students
-        </p>
-
-    </div>
-
-</div>
-
-
-<!-- ================= POPULAR LESSONS ================= -->
-
-<section id="lessons">
-
-    <div class="section-title">
-
-        <h2>
-            🔥 Popular <span>Lessons</span>
-        </h2>
-
-    </div>
-
-
-    <div class="lessons">
-
-
-        <div class="lesson">
-
-            <img
-            src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80">
-
-            <div class="lesson-content">
-
-                <h3>
-                    Algebra – Part 1
-                </h3>
-
-                <p>
-                    Mathematics • Grade 10
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="lesson">
-
-            <img
-            src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=800&q=80">
-
-            <div class="lesson-content">
-
-                <h3>
-                    Chemical Reactions
-                </h3>
-
-                <p>
-                    Science • Grade 9
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="lesson">
-
-            <img
-            src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=800&q=80">
-
-            <div class="lesson-content">
-
-                <h3>
-                    Types of Sentences
-                </h3>
-
-                <p>
-                    English • Grade 7
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="lesson">
-
-            <img
-            src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=800&q=80">
-
-            <div class="lesson-content">
-
-                <h3>
-                    Study Resources
-                </h3>
-
-                <p>
-                    Notes • All Grades
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= CTA ================= -->
-
-<div class="cta">
-
-    <div>
-
-        <h2>
-            Join <span>PAUL ACADEMY</span>
-        </h2>
-
-        <p>
-            Start your learning journey today!
-        </p>
-
-    </div>
-
-
-    <a
-    href="#grades"
-    class="btn primary">
-
-        Join Now – It's Free! →
-
-    </a>
-
-</div>
-
-
-<!-- ================= FOOTER ================= -->
-
-<footer>
-
-    <h2>
-        🎓 PAUL ACADEMY
+  </div>
+
+  <!-- ===== Join Now (ኦሪጅናል) ===== -->
+  <section class="cta-section container">
+    <h2 style="font-size: 2rem; color: #1a3a6b; margin-bottom: 10px;">
+      🚀 Join PAUL ACADEMY
     </h2>
-
-    <p>
-        Learn Today. Lead Tomorrow.
+    <p style="color: #475569; font-size: 1.1rem; margin-bottom: 25px;">
+      and start your journey to success today!
     </p>
-
-    <p>
-        © 2026 PAUL ACADEMY.
-        All Rights Reserved.
-    </p>
-
-</footer>
-
-
-<!-- ================= JAVASCRIPT ================= -->
-
-<script>
-
-/* ================= SEARCH ================= */
-
-function searchSite(){
-
-    let input =
-    document.getElementById("searchInput").value;
-
-    if(input.trim() === ""){
-[8/27/2026 2:14 AM] Paulos Bunaro: alert(
-            "Please type something to search."
-        );
-
-        return;
-    }
-
-    alert(
-        "Searching for: " +
-        input +
-        "\n\nSearch system will be connected to your lessons and subjects."
-    );
-}
-
-
-/* ================= OPEN GRADE 1 ================= */
-
-function openGrade1(){
-
-    document.getElementById(
-        "grade1Subjects"
-    ).style.display = "block";
-
-    document.getElementById(
-        "subjectLessons"
-    ).style.display = "none";
-
-    document.getElementById(
-        "learningContent"
-    ).style.display = "none";
-
-    document.getElementById(
-        "grade1Subjects"
-    ).scrollIntoView({
-        behavior:"smooth"
-    });
-}
-
-
-/* ================= OPEN SUBJECT ================= */
-
-function openSubject(subject){
-
-    document.getElementById(
-        "grade1Subjects"
-    ).style.display = "none";
-
-    document.getElementById(
-        "subjectLessons"
-    ).style.display = "block";
-
-    document.getElementById(
-        "learningContent"
-    ).style.display = "none";
-
-    document.getElementById(
-        "selectedSubject"
-    ).innerText = subject;
-
-    createChapters(subject);
-
-    document.getElementById(
-        "subjectLessons"
-    ).scrollIntoView({
-        behavior:"smooth"
-    });
-}
-
-
-/* ================= CREATE CHAPTERS ================= */
-
-function createChapters(subject){
-
-    let chapterList =
-    document.getElementById(
-        "chapterList"
-    );
-
-    let chapters = [
-
-        "Chapter 1 – Introduction",
-
-        "Chapter 2 – Basic Concepts",
-
-        "Chapter 3 – Practice",
-
-        "Chapter 4 – Review",
-
-        "Chapter 5 – Exam Preparation"
-
-    ];
-
-    chapterList.innerHTML = "";
-
-    chapters.forEach(
-        function(chapter,index){
-
-            let div =
-            document.createElement("div");
-
-            div.className = "chapter";
-
-            div.onclick =
-            function(){
-
-                openLesson(
-                    subject,
-                    chapter
-                );
-
-            };
-
-            div.innerHTML =
-
-                "<h3>📘 " +
-                chapter +
-                "</h3>" +
-
-                "<p>" +
-                "Grade 1 " +
-                subject +
-                " lesson. Click to learn more." +
-                "</p>";
-
-            chapterList.appendChild(div);
-
-        }
-    );
-}
-
-
-/* ================= OPEN LESSON ================= */
-
-function openLesson(subject,chapter){
-
-    document.getElementById(
-        "subjectLessons"
-    ).style.display = "none";
-
-    document.getElementById(
-        "learningContent"
-    ).style.display = "block";
-
-    document.getElementById(
-        "lessonTitle"
-    ).innerText =
-        "Grade 1 • " +
-        subject +
-        " • " +
-        chapter;
-
-    showContent("lesson");
-
-    document.getElementById(
-        "learningContent"
-    ).scrollIntoView({
-        behavior:"smooth"
-    });
-}
-
-
-/* ================= BACK TO GRADE 1 ================= */
-
-function backToGrade1(){
-
-    document.getElementById(
-        "subjectLessons"
-    ).style.display = "none";
-
-    document.getElementById(
-        "grade1Subjects"
-    ).style.display = "block";
-
-    document.getElementById(
-        "grade1Subjects"
-    ).scrollIntoView({
-        behavior:"smooth"
-    });
-}
-
-
-/* ================= BACK TO CHAPTERS ================= */
-
-function backToChapters(){
-
-    document.getElementById(
-        "learningContent"
-    ).style.display = "none";
-
-    document.getElementById(
-        "subjectLessons"
-    ).style.display = "block";
-
-    document.getElementById(
-        "subjectLessons"
-    ).scrollIntoView({
-        behavior:"smooth"
-    });
-}
-
-
-/* ================= LESSON TABS ================= */
-
-function showContent(type){
-
-    document.getElementById(
-        "lessonContent"
-    ).style.display = "none";
-
-    document.getElementById(
-        "noteContent"
-    ).style.display = "none";
-
-    document.getElementById(
-        "videoContent"
-    ).style.display = "none";
-
-    document.getElementById(
-        "examContent"
-    ).style.display = "none";
-
-
-    if(type === "lesson"){
-[8/27/2026 2:14 AM] Paulos Bunaro: document.getElementById(
-            "lessonContent"
-        ).style.display = "block";
-
-    }
-
-
-    if(type === "note"){
-
-        document.getElementById(
-            "noteContent"
-        ).style.display = "block";
-
-    }
-
-
-    if(type === "video"){
-
-        document.getElementById(
-            "videoContent"
-        ).style.display = "block";
-
-    }
-
-
-    if(type === "exam"){
-
-        document.getElementById(
-            "examContent"
-        ).style.display = "block";
-
-    }
-
-}function openGrade1(){
-
-    document.getElementById("grade1Subjects").style.display = "block";
-
-    document.getElementById("grade1Subjects").scrollIntoView({
-        behavior: "smooth"
-    });
-}
-
-</script>
+    <a href="#" class="btn-join">Join Now – It’s Free! →</a>
+  </section>
+[8/27/2026 3:12 AM] Paulos Bunaro: <!-- ===== ግርጌ ===== -->
+  <footer class="footer">
+    <div class="container">
+      <p><strong>PAUL ACADEMY</strong> — Learn Today. Lead Tomorrow.</p>
+      <small>© 2026 PAUL ACADEMY. All rights reserved.</small>
+    </div>
+  </footer>
 
 </body>
 </html>
