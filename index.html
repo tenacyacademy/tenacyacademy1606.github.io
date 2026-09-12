@@ -1,618 +1,519 @@
-[8/27/2026 3:37 AM] Paulos Bunaro: <!DOCTYPE html>
-<html lang="am">
+[9/12/2026 1:04 PM] Paulos Bunaro: <!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PAUL ACADEMY - መነሻ ገጽ</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School Online System</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    color:#222;
+}
+
+/* LOGIN */
+.login-page{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#1d4ed8,#2563eb,#60a5fa);
+}
+
+.login-box{
+    width:380px;
+    background:white;
+    padding:35px;
+    border-radius:15px;
+    box-shadow:0 10px 35px rgba(0,0,0,.2);
+}
+
+.login-box h1{
+    text-align:center;
+    color:#1d4ed8;
+    margin-bottom:8px;
+}
+
+.login-box p{
+    text-align:center;
+    color:#777;
+    margin-bottom:25px;
+}
+
+.login-box label{
+    display:block;
+    margin:12px 0 6px;
+    font-weight:bold;
+}
+
+.login-box input,
+.login-box select{
+    width:100%;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    font-size:15px;
+}
+
+.login-btn{
+    width:100%;
+    margin-top:20px;
+    padding:13px;
+    border:0;
+    border-radius:8px;
+    background:#2563eb;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.login-btn:hover{
+    background:#1d4ed8;
+}
+
+#error{
+    color:red;
+    text-align:center;
+    margin-top:12px;
+}
+
+/* DASHBOARD */
+.dashboard{
+    display:none;
+    min-height:100vh;
+}
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    bottom:0;
+    width:240px;
+    background:#172554;
+    color:white;
+    padding:20px;
+}
+
+.logo{
+    text-align:center;
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:30px;
+}
+
+.sidebar button{
+    width:100%;
+    padding:12px;
+    margin:5px 0;
+    border:0;
+    border-radius:7px;
+    background:transparent;
+    color:white;
+    text-align:left;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.sidebar button:hover{
+    background:#2563eb;
+}
+
+.logout{
+    margin-top:30px !important;
+    background:#dc2626 !important;
+}
+
+.main{
+    margin-left:240px;
+    padding:25px;
+}
+
+.topbar{
+    background:white;
+    padding:18px 25px;
+    border-radius:10px;
+    margin-bottom:25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.topbar h2{
+    color:#172554;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.07);
+}
+
+.card h3{
+    color:#555;
+    font-size:15px;
+}
+
+.card .number{
+    font-size:30px;
+    font-weight:bold;
+    margin-top:10px;
+    color:#2563eb;
+}
+
+.content{
+    background:white;
+    margin-top:25px;
+    padding:25px;
+    border-radius:12px;
+}
+
+.content h2{
+    margin-bottom:15px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:12px;
+    border-bottom:1px solid #eee;
+    text-align:left;
+}
+
+th{
+    background:#eff6ff;
+}
+
+@media(max-width:800px){
+
+    .sidebar{
+        width:190px;
     }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f8fafc;
-      color: #1e293b;
-      line-height: 1.6;
-      scroll-behavior: smooth;
+    .main{
+        margin-left:190px;
     }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+
+    .sidebar{
+        position:relative;
+        width:100%;
+        height:auto;
     }
 
-    /* ===== ራስጌ ===== */
-    .header {
-      background: linear-gradient(135deg, #1a3a6b, #2d5aa0);
-      color: white;
-      padding: 35px 0 25px;
-      text-align: center;
-      border-radius: 0 0 30px 30px;
+    .main{
+        margin-left:0;
     }
 
-    .header h1 {
-      font-size: 2.8rem;
-      font-weight: 800;
-      letter-spacing: 2px;
+    .cards{
+        grid-template-columns:1fr;
     }
-
-    .header .subtitle {
-      font-size: 1.3rem;
-      opacity: 0.9;
-      margin-top: 5px;
-    }
-
-    .header .tagline {
-      font-size: 1rem;
-      opacity: 0.8;
-      margin-top: 12px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .header .btn-group {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      padding: 11px 32px;
-      background: white;
-      color: #1a3a6b;
-      font-weight: 700;
-      border-radius: 50px;
-      text-decoration: none;
-      transition: 0.2s;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    }
-
-    .btn-secondary {
-      display: inline-block;
-      padding: 11px 32px;
-      background: transparent;
-      color: white;
-      font-weight: 700;
-      border-radius: 50px;
-      text-decoration: none;
-      border: 2px solid white;
-      transition: 0.2s;
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255,255,255,0.15);
-      transform: translateY(-3px);
-    }
-
-    /* ===== የፍለጋ ሳጥን ===== */
-    .search-box {
-      text-align: center;
-      padding: 20px 0 10px;
-    }
-
-    .search-box input {
-      width: 100%;
-      max-width: 500px;
-      padding: 14px 24px;
-      border-radius: 50px;
-      border: 2px solid #e2e8f0;
-      font-size: 1rem;
-      outline: none;
-      transition: 0.2s;
-      background: white;
-    }
-
-    .search-box input:focus {
-      border-color: #1a3a6b;
-      box-shadow: 0 0 0 4px rgba(26,58,107,0.1);
-    }
-
-    /* ===== የክፍል ምርጫ ===== */
-    .section-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #1a3a6b;
-      text-align: center;
-      margin: 35px 0 18px;
-    }
-
-    .grade-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-      gap: 12px;
-      padding-bottom: 20px;
-    }
-
-    .grade-item {
-      background: white;
-      text-align: center;
-      padding: 14px 8px;
-      border-radius: 14px;
-      font-weight: 600;
-      color: #1e293b;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-      transition: 0.2s;
-      border: 2px solid transparent;
-      text-decoration: none;
-      display: block;
-    }
-
-    .grade-item:hover {
-      border-color: #1a3a6b;
-      transform: scale(1.03);
-    }
-
-    /* ለ Grade 1 ልዩ ቀለም */
-    .grade-item.grade1-link {
-      background: #fef3c7;
-      border-color: #fbbf24;
-      font-weight: 700;
-    }
-
-    .grade-item.grade1-link:hover {
-      background: #fde68a;
-      border-color: #f59e0b;
-    }
-
-    /* ===== ለ1ኛ ክፍል ልዩ ክፍል ===== */
-    #grade1-section {
-      scroll-margin-top: 20px;
-    }
-
-    .grade1-feature {
-      background: linear-gradient(145deg, #fef9e7, #fef3c7);
-      border: 2px solid #fbbf24;
-      border-radius: 24px;
-      padding: 30px 25px;
-      margin: 30px 0 40px;
-      box-shadow: 0 8px 30px rgba(251, 191, 36, 0.15);
-    }
-
-    .grade1-feature h2 {
-      font-size: 1.8rem;
-      color: #92400e;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 6px;
-      flex-wrap: wrap;
-    }
-[8/27/2026 3:37 AM] Paulos Bunaro: .grade1-feature h2 small {
-      font-size: 0.9rem;
-      font-weight: 400;
-      color: #b45309;
-    }
-
-    .grade1-feature .sub-desc {
-      color: #78350f;
-      margin-bottom: 20px;
-      font-size: 1.05rem;
-    }
-
-    .grade1-subjects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 18px;
-    }
-
-    .g1-subject {
-      background: white;
-      border-radius: 16px;
-      padding: 20px 14px;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-      border-bottom: 5px solid #1a3a6b;
-      transition: 0.2s;
-    }
-
-    .g1-subject:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    }
-
-    .g1-subject .icon {
-      font-size: 2.4rem;
-      display: block;
-    }
-
-    .g1-subject h4 {
-      font-size: 1rem;
-      margin-top: 6px;
-      color: #1e293b;
-    }
-
-    .g1-subject .badge {
-      display: inline-block;
-      background: #dbeafe;
-      color: #1a3a6b;
-      padding: 2px 16px;
-      border-radius: 30px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      margin-top: 6px;
-    }
-
-    .g1-subject:nth-child(1) { border-bottom-color: #ef4444; }
-    .g1-subject:nth-child(2) { border-bottom-color: #3b82f6; }
-    .g1-subject:nth-child(3) { border-bottom-color: #f59e0b; }
-    .g1-subject:nth-child(4) { border-bottom-color: #22c55e; }
-    .g1-subject:nth-child(5) { border-bottom-color: #a855f7; }
-
-    .g1-subject .btn-g1 {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 5px 20px;
-      background: #1a3a6b;
-      color: white;
-      border-radius: 40px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: 0.2s;
-    }
-
-    .g1-subject .btn-g1:hover {
-      background: #2d5aa0;
-    }
-
-    /* ===== አጠቃላይ ትምህርቶች ===== */
-    .subjects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 20px;
-      padding-bottom: 30px;
-    }
-
-    .subject-card {
-      background: white;
-      border-radius: 18px;
-      padding: 22px 16px;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-      transition: 0.2s;
-      border-top: 4px solid #2d5aa0;
-    }
-
-    .subject-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.07);
-    }
-
-    .subject-card .icon { font-size: 2.2rem; display: block; }
-    .subject-card h4 { font-size: 1rem; margin-top: 6px; }
-    .subject-card .more {
-      color: #94a3b8;
-      font-size: 0.8rem;
-    }
-
-    .view-all {
-      text-align: right;
-      margin: -10px 0 20px;
-    }
-    .view-all a {
-      color: #1a3a6b;
-      font-weight: 600;
-      text-decoration: none;
-    }
-    .view-all a:hover { text-decoration: underline; }
-
-    /* ===== መሳሪያዎች ===== */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-      padding: 20px 0 30px;
-    }
-
-    .feature-card {
-      background: white;
-      border-radius: 18px;
-      padding: 28px 20px;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-    }
-
-    .feature-card .icon { font-size: 2.6rem; display: block; }
-    .feature-card h4 { font-size: 1.2rem; margin: 8px 0 4px; }
-    .feature-card p { color: #64748b; font-size: 0.9rem; }
-
-    /* ===== ስታቲስቲክስ ===== */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-      padding: 30px 0;
-      text-align: center;
-    }
-
-    .stat-item {
-      background: white;
-      border-radius: 16px;
-      padding: 22px 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-    }
-
-    .stat-item .number {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: #1a3a6b;
-    }
-
-    .stat-item .label {
-      color: #64748b;
-      font-size: 0.9rem;
-    }
-
-    /* ===== ተወዳጅ ትምህርቶች ===== */
-    .popular-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      padding: 15px 0 30px;
-    }
-[8/27/2026 3:37 AM] Paulos Bunaro: .popular-card {
-      background: white;
-      border-radius: 16px;
-      padding: 20px 18px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-      border-left: 4px solid #fbbf24;
-    }
-
-    .popular-card h4 { color: #1a3a6b; font-size: 1.05rem; }
-    .popular-card .meta { font-size: 0.85rem; color: #64748b; margin-top: 4px; }
-
-    /* ===== መግቢያ ===== */
-    .cta-section {
-      text-align: center;
-      padding: 30px 0 50px;
-    }
-
-    .btn-join {
-      display: inline-block;
-      padding: 16px 50px;
-      background: linear-gradient(135deg, #fbbf24, #f59e0b);
-      color: #1a3a6b;
-      font-weight: 700;
-      font-size: 1.2rem;
-      border-radius: 50px;
-      text-decoration: none;
-      box-shadow: 0 8px 30px rgba(245, 158, 11, 0.35);
-      transition: 0.3s;
-    }
-
-    .btn-join:hover {
-      transform: scale(1.03);
-      box-shadow: 0 12px 40px rgba(245, 158, 11, 0.45);
-    }
-
-    /* ===== ግርጌ ===== */
-    .footer {
-      background: #1a3a6b;
-      color: white;
-      text-align: center;
-      padding: 25px 0;
-      border-radius: 30px 30px 0 0;
-      margin-top: 20px;
-    }
-
-    .footer small {
-      opacity: 0.8;
-      display: block;
-      margin-top: 6px;
-    }
-
-    /* ===== ምላሽ ሰጪ ===== */
-    @media (max-width: 600px) {
-      .header h1 { font-size: 2rem; }
-      .grade-grid { grid-template-columns: repeat(4, 1fr); }
-      .grade1-subjects { grid-template-columns: 1fr 1fr; }
-      .subjects-grid { grid-template-columns: 1fr 1fr; }
-      .popular-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+}
+</style>
 </head>
+
 <body>
 
-  <!-- ===== ራስጌ ===== -->
-  <header class="header">
-    <div class="container">
-      <h1>📚 PAUL ACADEMY</h1>
-      <p class="subtitle">Learn Today. Lead Tomorrow.</p>
-      <p class="tagline">
-        Quality education for Grade 1 to 12.<br />
-        All subjects, notes, videos &amp; exams in one place.
-      </p>
-      <div class="btn-group">
-        <a href="#" class="btn-primary">Start Learning →</a>
-        <a href="#" class="btn-secondary">Explore Courses</a>
-      </div>
+<!-- LOGIN PAGE -->
+<div class="login-page" id="loginPage">
+
+    <div class="login-box">
+
+        <h1>🏫 School Online</h1>
+        <p>School Management System</p>
+
+        <label>User Type</label>
+
+        <select id="userType">
+            <option value="admin">Admin</option>
+            <option value="teacher">Teacher</option>
+            <option value="parent">Parent</option>
+            <option value="student">Student</option>
+        </select>
+
+        <label>Username</label>
+        <input type="text" id="username" placeholder="Enter username">
+
+        <label>Password</label>
+        <input type="password" id="password" placeholder="Enter password">
+
+        <button class="login-btn" onclick="login()">Login</button>
+[9/12/2026 1:04 PM] Paulos Bunaro: <div id="error"></div>
+
     </div>
-  </header>
 
-  <!-- ===== የፍለጋ ሳጥን ===== -->
-  <div class="container search-box">
-    <input type="text" placeholder="Search for lessons, subjects, notes..." />
-  </div>
+</div>
 
-  <!-- ===== Choose Your Grade ===== -->
-  <div class="container">
-    <h2 class="section-title">Choose Your Grade</h2>
-    <div class="grade-grid">
-      <!-- 🔽 Grade 1 → ወደ ታች ይዘልላል -->
-      <a href="#grade1-section" class="grade-item grade1-link">⭐ Grade 1</a>
-      <!-- Grade 2–12 → ምንም አያደርጉም -->
-      <a href="#" class="grade-item">Grade 2</a>
-      <a href="#" class="grade-item">Grade 3</a>
-      <a href="#" class="grade-item">Grade 4</a>
-      <a href="#" class="grade-item">Grade 5</a>
-      <a href="#" class="grade-item">Grade 6</a>
-      <a href="#" class="grade-item">Grade 7</a>
-      <a href="#" class="grade-item">Grade 8</a>
-      <a href="#" class="grade-item">Grade 9</a>
-      <a href="#" class="grade-item">Grade 10</a>
-      <a href="#" class="grade-item">Grade 11</a>
-      <a href="#" class="grade-item">Grade 12</a>
-    </div>
-  </div>
 
-  <!-- ===== 🆕 ለ1ኛ ክፍል ልዩ ክፍል ===== -->
-  <div class="container" id="grade1-section">
-    <div class="grade1-feature">
-      <h2>
-        🎒 ለ1ኛ ክፍል ተማሪዎች የተዘጋጁ ትምህርቶች
-        <small>— እነዚህን መሰረታዊ ትምህርቶች ይማሩ</small>
-      </h2>
-      <p class="sub-desc">
-        ለ1ኛ ክፍል 5 መሰረታዊ ትምህርቶች ከቪዲዮ፣ ማጠቃለያ እና የፈተና ጥያቄዎች ጋር።
-      </p>
-      <div class="grade1-subjects">
-        <!-- Mathematics -->
-        <div class="g1-subject">
-          <span class="icon">➕</span>
-          <h4>Mathematics</h4>
-          <span class="badge">ሒሳብ</span>
-          <a href="#" class="btn-g1">ጀምር</a>
+<!-- DASHBOARD -->
+<div class="dashboard" id="dashboard">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+        <div class="logo">
+            🏫 School Online
         </div>
-        <!-- English -->
-        <div class="g1-subject">
-          <span class="icon">🔤</span>
-          <h4>English</h4>
-[8/27/2026 3:37 AM] Paulos Bunaro: <span class="badge">እንግሊዝኛ</span>
-          <a href="#" class="btn-g1">ጀምር</a>
-        </div>
-        <!-- Amharic -->
-        <div class="g1-subject">
-          <span class="icon">📝</span>
-          <h4>Amharic</h4>
-          <span class="badge">አማርኛ</span>
-          <a href="#" class="btn-g1">ጀምር</a>
-        </div>
-        <!-- Environmental Science -->
-        <div class="g1-subject">
-          <span class="icon">🌿</span>
-          <h4>Environmental Science</h4>
-          <span class="badge">አካባቢ ሳይንስ</span>
-          <a href="#" class="btn-g1">ጀምር</a>
-        </div>
-        <!-- Wolaitic -->
-        <div class="g1-subject">
-          <span class="icon">🗣️</span>
-          <h4>Wolaitic</h4>
-          <span class="badge">ወላይትኛ</span>
-          <a href="#" class="btn-g1">ጀምር</a>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- ===== Explore Subjects ===== -->
-  <div class="container">
-    <h2 class="section-title">Explore Subjects</h2>
-    <div class="subjects-grid">
-      <div class="subject-card">
-        <span class="icon">📐</span>
-        <h4>Mathematics</h4>
-      </div>
-      <div class="subject-card">
-        <span class="icon">📖</span>
-        <h4>English</h4>
-      </div>
-      <div class="subject-card">
-        <span class="icon">✍️</span>
-        <h4>Amharic</h4>
-      </div>
-      <div class="subject-card">
-        <span class="icon">🔬</span>
-        <h4>General Science</h4>
-      </div>
-      <div class="subject-card">
-        <span class="icon">🌍</span>
-        <h4>Social Studies</h4>
-      </div>
-      <div class="subject-card">
-        <span class="icon">💻</span>
-        <h4>ICT</h4>
-      </div>
-      <div class="subject-card">
-        <span class="icon">🏃</span>
-        <h4>Health &amp; PHE</h4>
-      </div>
-      <div class="subject-card">
-        <span class="icon">➕</span>
-        <h4>More Subjects</h4>
-        <span class="more">ተጨማሪ</span>
-      </div>
-    </div>
-    <div class="view-all">
-      <a href="#">View All Subjects →</a>
-    </div>
-  </div>
+        <div id="menu"></div>
 
-  <!-- ===== Video, Notes, Exams, Progress ===== -->
-  <div class="container">
-    <div class="features-grid">
-      <div class="feature-card">
-        <span class="icon">🎥</span>
-        <h4>Video Lessons</h4>
-        <p>Watch high-quality video lessons from experienced teachers.</p>
-      </div>
-      <div class="feature-card">
-        <span class="icon">📄</span>
-        <h4>Short Notes</h4>
-        <p>Easy-to-read notes for all topics and chapters.</p>
-      </div>
-      <div class="feature-card">
-        <span class="icon">📋</span>
-        <h4>Exam Questions</h4>
-        <p>Regional &amp; national exam questions with answers and explanations.</p>
-      </div>
-      <div class="feature-card">
-        <span class="icon">📊</span>
-        <h4>Track Progress</h4>
-        <p>Track your learning progress and improve your results.</p>
-      </div>
-    </div>
-  </div>
+        <button class="logout" onclick="logout()">
+            🚪 Logout
+        </button>
 
-  <!-- ===== Stats ===== -->
-  <div class="container">
-    <div class="stats-grid">
-      <div class="stat-item">
-        <div class="number">12</div>
-        <div class="label">Grades Covered (1 – 12)</div>
-      </div>
-      <div class="stat-item">
-        <div class="number">5000+</div>
-        <div class="label">Lessons &amp; Videos</div>
-      </div>
-      <div class="stat-item">
-        <div class="number">10000+</div>
-        <div class="label">Notes &amp; Resources</div>
-      </div>
-      <div class="stat-item">
-        <div class="number">50K+</div>
-        <div class="label">Happy Students</div>
-      </div>
     </div>
-  </div>
 
-  <!-- ===== Popular Lessons ===== -->
-  <div class="container">
-    <h2 class="section-title">Popular Lessons</h2>
-    <div class="popular-grid">
-      <div class="popular-card">
-        <h4>Grade 10 — Algebra – Part 1</h4>
-        <p class="meta">📐 Mathematics • 12.5K views</p>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <div class="topbar">
+            <h2 id="dashboardTitle">Dashboard</h2>
+            <span id="welcomeUser"></span>
+        </div>
+
+        <div class="cards" id="cards"></div>
+
+        <div class="content" id="content">
+
+            <h2>Welcome</h2>
+
+            <p>
+                Welcome to the School Online Management System.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function login(){
+
+    const type = document.getElementById("userType").value;
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    let valid = false;
+
+    if(type === "admin" &&
+       username === "admin" &&
+       password === "1234"){
+        valid = true;
+    }
+
+    if(type === "teacher" &&
+       username === "teacher" &&
+       password === "1234"){
+        valid = true;
+    }
+
+    if(type === "parent" &&
+       username === "parent" &&
+       password === "1234"){
+        valid = true;
+    }
+
+    if(type === "student" &&
+       username === "student" &&
+       password === "1234"){
+        valid = true;
+    }
+
+    if(valid){
+
+        document.getElementById("loginPage").style.display="none";
+        document.getElementById("dashboard").style.display="block";
+
+        createDashboard(type);
+
+    }else{
+
+        document.getElementById("error").innerText =
+        "Incorrect username or password.";
+
+    }
+
+}
+
+
+function createDashboard(type){
+
+    const menu = document.getElementById("menu");
+    const cards = document.getElementById("cards");
+    const content = document.getElementById("content");
+
+    menu.innerHTML="";
+    cards.innerHTML="";
+
+    document.getElementById("dashboardTitle").innerText =
+        type.charAt(0).toUpperCase()+type.slice(1)+" Dashboard";
+
+    document.getElementById("welcomeUser").innerText =
+        "Welcome, "+type;
+
+
+    if(type === "admin"){
+
+        addMenu("👨‍🎓 Students");
+        addMenu("👨‍🏫 Teachers");
+        addMenu("👨‍👩‍👧 Parents");
+        addMenu("🏫 Classes");
+        addMenu("📚 Subjects");
+        addMenu("📝 Attendance");
+        addMenu("📊 Results");
+        addMenu("📢 Announcements");
+
+        createCard("Students","250");
+        createCard("Teachers","25");
+        createCard("Classes","16");
+        createCard("Subjects","12");
+
+        content.innerHTML = 
+            <h2>Admin Dashboard</h2>
+            <p>Manage students, teachers, classes, subjects, attendance and results.</p>
+        ;
+    }
+
+
+    if(type === "teacher"){
+
+        addMenu("🏫 My Classes");
+        addMenu("📝 Student Attendance");
+        addMenu("📚 Homework");
+        addMenu("📊 Enter Marks");
+        addMenu("💬 Parent Messages");
+
+        createCard("My Students","120");
+        createCard("My Classes","4");
+        createCard("Homework","18");
+        createCard("Pending Marks","5");
+
+        content.innerHTML = 
+            <h2>Teacher Dashboard</h2>
+            <p>Manage your classes, attendance, homework and student marks.</p>
+        ;
+    }
+
+
+    if(type === "parent"){
+
+        addMenu("📝 Child Attendance");
+        addMenu("📊 Results");
+        addMenu("📚 Homework");
+        addMenu("💬 Teacher Messages");
+        addMenu("📢 Announcements");
+
+        createCard("Children","2");
+        createCard("Attendance","95%");
+        createCard("Average Result","82%");
+        createCard("Homework","6");
+
+        content.innerHTML = 
+            <h2>Parent Dashboard</h2>
+            <p>Monitor your child's attendance, results and homework.</p>
+        ;
+    }
+
+
+    if(type === "student"){
+[9/12/2026 1:04 PM] Paulos Bunaro: addMenu("📚 Subjects");
+        addMenu("📝 Homework");
+        addMenu("📊 Results");
+        addMenu("📅 Attendance");
+        addMenu("📖 Learning Materials");
+
+        createCard("Subjects","8");
+        createCard("Homework","4");
+        createCard("Average Result","85%");
+        createCard("Attendance","96%");
+
+        content.innerHTML = 
+            <h2>Student Dashboard</h2>
+            <p>View your subjects, homework, results, attendance and learning materials.</p>
+        ;
+    }
+
+}
+
+
+function addMenu(text){
+
+    const menu = document.getElementById("menu");
+
+    const button = document.createElement("button");
+
+    button.innerText = text;
+
+    button.onclick = function(){
+
+        document.getElementById("content").innerHTML = 
+            <h2>${text}</h2>
+            <p>This section will be connected to the database in the next version.</p>
+        ;
+
+    };
+
+    menu.appendChild(button);
+
+}
+
+
+function createCard(title,number){
+
+    const cards = document.getElementById("cards");
+
+    const card = document.createElement("div");
+
+    card.className="card";
+
+    card.innerHTML=
+        <h3>${title}</h3>
+        <div class="number">${number}</div>
+    ;
+
+    cards.appendChild(card);
+
+}
+
+
+function logout(){
+
+    document.getElementById("dashboard").style.display="none";
+    document.getElementById("loginPage").style.display="flex";
+
+    document.getElementById("username").value="";
+    document.getElementById("password").value="";
+    document.getElementById("error").innerText="";
+
+}
+
+</script>
+
+</body>
+</html>
