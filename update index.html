@@ -1,517 +1,154 @@
-[9/12/2026 1:04 PM] Paulos Bunaro: <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>School Online System</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
-}
+  <title>PAUL ACADEMY | Login</title>
 
-body{
-    background:#f4f6f9;
-    color:#222;
-}
-
-/* LOGIN */
-.login-page{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,#1d4ed8,#2563eb,#60a5fa);
-}
-
-.login-box{
-    width:380px;
-    background:white;
-    padding:35px;
-    border-radius:15px;
-    box-shadow:0 10px 35px rgba(0,0,0,.2);
-}
-
-.login-box h1{
-    text-align:center;
-    color:#1d4ed8;
-    margin-bottom:8px;
-}
-
-.login-box p{
-    text-align:center;
-    color:#777;
-    margin-bottom:25px;
-}
-
-.login-box label{
-    display:block;
-    margin:12px 0 6px;
-    font-weight:bold;
-}
-
-.login-box input,
-.login-box select{
-    width:100%;
-    padding:12px;
-    border:1px solid #ddd;
-    border-radius:8px;
-    font-size:15px;
-}
-
-.login-btn{
-    width:100%;
-    margin-top:20px;
-    padding:13px;
-    border:0;
-    border-radius:8px;
-    background:#2563eb;
-    color:white;
-    font-size:16px;
-    cursor:pointer;
-}
-
-.login-btn:hover{
-    background:#1d4ed8;
-}
-
-#error{
-    color:red;
-    text-align:center;
-    margin-top:12px;
-}
-
-/* DASHBOARD */
-.dashboard{
-    display:none;
-    min-height:100vh;
-}
-
-.sidebar{
-    position:fixed;
-    left:0;
-    top:0;
-    bottom:0;
-    width:240px;
-    background:#172554;
-    color:white;
-    padding:20px;
-}
-
-.logo{
-    text-align:center;
-    font-size:22px;
-    font-weight:bold;
-    margin-bottom:30px;
-}
-
-.sidebar button{
-    width:100%;
-    padding:12px;
-    margin:5px 0;
-    border:0;
-    border-radius:7px;
-    background:transparent;
-    color:white;
-    text-align:left;
-    cursor:pointer;
-    font-size:15px;
-}
-
-.sidebar button:hover{
-    background:#2563eb;
-}
-
-.logout{
-    margin-top:30px !important;
-    background:#dc2626 !important;
-}
-
-.main{
-    margin-left:240px;
-    padding:25px;
-}
-
-.topbar{
-    background:white;
-    padding:18px 25px;
-    border-radius:10px;
-    margin-bottom:25px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.topbar h2{
-    color:#172554;
-}
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:20px;
-}
-
-.card{
-    background:white;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 3px 10px rgba(0,0,0,.07);
-}
-
-.card h3{
-    color:#555;
-    font-size:15px;
-}
-
-.card .number{
-    font-size:30px;
-    font-weight:bold;
-    margin-top:10px;
-    color:#2563eb;
-}
-
-.content{
-    background:white;
-    margin-top:25px;
-    padding:25px;
-    border-radius:12px;
-}
-
-.content h2{
-    margin-bottom:15px;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-th,td{
-    padding:12px;
-    border-bottom:1px solid #eee;
-    text-align:left;
-}
-
-th{
-    background:#eff6ff;
-}
-
-@media(max-width:800px){
-
-    .sidebar{
-        width:190px;
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
     }
 
-    .main{
-        margin-left:190px;
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #061d46, #174ea6);
     }
 
-    .cards{
-        grid-template-columns:repeat(2,1fr);
-    }
-}
-
-@media(max-width:600px){
-
-    .sidebar{
-        position:relative;
-        width:100%;
-        height:auto;
+    .login-box {
+      width: 90%;
+      max-width: 420px;
+      background: white;
+      padding: 35px;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
     }
 
-    .main{
-        margin-left:0;
+    .logo {
+      text-align: center;
+      color: #061d46;
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 8px;
     }
 
-    .cards{
-        grid-template-columns:1fr;
+    .subtitle {
+      text-align: center;
+      color: #777;
+      margin-bottom: 30px;
     }
-}
-</style>
+
+    label {
+      display: block;
+      margin: 15px 0 7px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: #061d46;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #174ea6;
+    }
+
+    .message {
+      text-align: center;
+      margin-top: 18px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- LOGIN PAGE -->
-<div class="login-page" id="loginPage">
+  <div class="login-box">
 
-    <div class="login-box">
+    <div class="logo">PAUL ACADEMY</div>
 
-        <h1>🏫 School Online</h1>
-        <p>School Management System</p>
-
-        <label>User Type</label>
-
-        <select id="userType">
-            <option value="admin">Admin</option>
-            <option value="teacher">Teacher</option>
-            <option value="parent">Parent</option>
-            <option value="student">Student</option>
-        </select>
-
-        <label>Username</label>
-        <input type="text" id="username" placeholder="Enter username">
-
-        <label>Password</label>
-        <input type="password" id="password" placeholder="Enter password">
-
-        <button class="login-btn" onclick="login()">Login</button>
-[9/12/2026 1:04 PM] Paulos Bunaro: <div id="error"></div>
-
+    <div class="subtitle">
+      Learn Today. Lead Tomorrow.
     </div>
 
-</div>
+    <form id="loginForm">
 
+      <label>Email or Username</label>
+      <input
+        type="text"
+        id="username"
+        placeholder="Enter username"
+        required
+      >
 
-<!-- DASHBOARD -->
-<div class="dashboard" id="dashboard">
+      <label>Password</label>
+      <input
+        type="password"
+        id="password"
+        placeholder="Enter password"
+        required
+      >
 
-    <!-- SIDEBAR -->
-    <div class="sidebar">
+      <label>Login As</label>
+      <select id="role" required>
+        <option value="">Select your role</option>
+        <option value="admin">Admin</option>
+        <option value="tutor">Tutor</option>
+        <option value="parent">Parent</option>
+      </select>
 
-        <div class="logo">
-            🏫 School Online
-        </div>
+      <button type="submit">LOGIN</button>
 
-        <div id="menu"></div>
+      <div class="message" id="message"></div>
 
-        <button class="logout" onclick="logout()">
-            🚪 Logout
-        </button>
+    </form>
 
-    </div>
-
-
-    <!-- MAIN -->
-    <div class="main">
-
-        <div class="topbar">
-            <h2 id="dashboardTitle">Dashboard</h2>
-            <span id="welcomeUser"></span>
-        </div>
-
-        <div class="cards" id="cards"></div>
-
-        <div class="content" id="content">
-
-            <h2>Welcome</h2>
-
-            <p>
-                Welcome to the School Online Management System.
-            </p>
-
-        </div>
-
-    </div>
-
-</div>
-
+  </div>
 
 <script>
 
-function login(){
+document.getElementById("loginForm").addEventListener("submit", function(event) {
 
-    const type = document.getElementById("userType").value;
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+  event.preventDefault();
 
-    let valid = false;
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+  const role = document.getElementById("role").value;
 
-    if(type === "admin" &&
-       username === "admin" &&
-       password === "1234"){
-        valid = true;
-    }
+  if (role === "") {
+    document.getElementById("message").innerHTML =
+      "Please select your role.";
+    return;
+  }
 
-    if(type === "teacher" &&
-       username === "teacher" &&
-       password === "1234"){
-        valid = true;
-    }
+  document.getElementById("message").innerHTML =
+    "Login system is ready for " + role + ".";
 
-    if(type === "parent" &&
-       username === "parent" &&
-       password === "1234"){
-        valid = true;
-    }
-
-    if(type === "student" &&
-       username === "student" &&
-       password === "1234"){
-        valid = true;
-    }
-
-    if(valid){
-
-        document.getElementById("loginPage").style.display="none";
-        document.getElementById("dashboard").style.display="block";
-
-        createDashboard(type);
-
-    }else{
-
-        document.getElementById("error").innerText =
-        "Incorrect username or password.";
-
-    }
-
-}
-
-
-function createDashboard(type){
-
-    const menu = document.getElementById("menu");
-    const cards = document.getElementById("cards");
-    const content = document.getElementById("content");
-
-    menu.innerHTML="";
-    cards.innerHTML="";
-
-    document.getElementById("dashboardTitle").innerText =
-        type.charAt(0).toUpperCase()+type.slice(1)+" Dashboard";
-
-    document.getElementById("welcomeUser").innerText =
-        "Welcome, "+type;
-
-
-    if(type === "admin"){
-
-        addMenu("👨‍🎓 Students");
-        addMenu("👨‍🏫 Teachers");
-        addMenu("👨‍👩‍👧 Parents");
-        addMenu("🏫 Classes");
-        addMenu("📚 Subjects");
-        addMenu("📝 Attendance");
-        addMenu("📊 Results");
-        addMenu("📢 Announcements");
-
-        createCard("Students","250");
-        createCard("Teachers","25");
-        createCard("Classes","16");
-        createCard("Subjects","12");
-
-        content.innerHTML = 
-            <h2>Admin Dashboard</h2>
-            <p>Manage students, teachers, classes, subjects, attendance and results.</p>
-        ;
-    }
-
-
-    if(type === "teacher"){
-
-        addMenu("🏫 My Classes");
-        addMenu("📝 Student Attendance");
-        addMenu("📚 Homework");
-        addMenu("📊 Enter Marks");
-        addMenu("💬 Parent Messages");
-
-        createCard("My Students","120");
-        createCard("My Classes","4");
-        createCard("Homework","18");
-        createCard("Pending Marks","5");
-
-        content.innerHTML = 
-            <h2>Teacher Dashboard</h2>
-            <p>Manage your classes, attendance, homework and student marks.</p>
-        ;
-    }
-
-
-    if(type === "parent"){
-
-        addMenu("📝 Child Attendance");
-        addMenu("📊 Results");
-        addMenu("📚 Homework");
-        addMenu("💬 Teacher Messages");
-        addMenu("📢 Announcements");
-
-        createCard("Children","2");
-        createCard("Attendance","95%");
-        createCard("Average Result","82%");
-        createCard("Homework","6");
-
-        content.innerHTML = 
-            <h2>Parent Dashboard</h2>
-            <p>Monitor your child's attendance, results and homework.</p>
-        ;
-    }
-
-
-    if(type === "student"){
-[9/12/2026 1:04 PM] Paulos Bunaro: addMenu("📚 Subjects");
-        addMenu("📝 Homework");
-        addMenu("📊 Results");
-        addMenu("📅 Attendance");
-        addMenu("📖 Learning Materials");
-
-        createCard("Subjects","8");
-        createCard("Homework","4");
-        createCard("Average Result","85%");
-        createCard("Attendance","96%");
-
-        content.innerHTML = 
-            <h2>Student Dashboard</h2>
-            <p>View your subjects, homework, results, attendance and learning materials.</p>
-        ;
-    }
-
-}
-
-
-function addMenu(text){
-
-    const menu = document.getElementById("menu");
-
-    const button = document.createElement("button");
-
-    button.innerText = text;
-
-    button.onclick = function(){
-
-        document.getElementById("content").innerHTML = 
-            <h2>${text}</h2>
-            <p>This section will be connected to the database in the next version.</p>
-        ;
-
-    };
-
-    menu.appendChild(button);
-
-}
-
-
-function createCard(title,number){
-
-    const cards = document.getElementById("cards");
-
-    const card = document.createElement("div");
-
-    card.className="card";
-
-    card.innerHTML=
-        <h3>${title}</h3>
-        <div class="number">${number}</div>
-    ;
-
-    cards.appendChild(card);
-
-}
-
-
-function logout(){
-
-    document.getElementById("dashboard").style.display="none";
-    document.getElementById("loginPage").style.display="flex";
-
-    document.getElementById("username").value="";
-    document.getElementById("password").value="";
-    document.getElementById("error").innerText="";
-
-}
+});
 
 </script>
 
