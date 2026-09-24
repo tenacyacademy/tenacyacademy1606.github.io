@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PAUL ACADEMY | Admin Dashboard</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f7fc;
+      color: #172b4d;
+    }
+
+    .navbar {
+      background: #061d46;
+      color: white;
+      padding: 18px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .admin {
+      font-size: 15px;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .welcome {
+      color: #667085;
+      margin-bottom: 30px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .icon {
+      font-size: 35px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: #667085;
+      font-size: 14px;
+    }
+
+    .logout {
+      margin-top: 35px;
+      padding: 12px 22px;
+      background: #d92d20;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="navbar">
+    <div class="logo">PAUL ACADEMY</div>
+    <div class="admin">👤 Admin</div>
+  </div>
+
+  <div class="container">
+
+    <h1>Admin Dashboard</h1>
+
+    <p class="welcome">
+      Welcome to PAUL ACADEMY management system.
+    </p>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="icon">👨‍🎓</div>
+        <h3>Students</h3>
+        <p>Manage students and their information.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">👨‍🏫</div>
+        <h3>Tutors</h3>
+        <p>Add and manage tutors.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">👨‍👩‍👧</div>
+        <h3>Parents</h3>
+        <p>Manage parent accounts.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📚</div>
+        <h3>Grades & Subjects</h3>
+        <p>Manage grades and subjects.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📖</div>
+        <h3>Lessons</h3>
+        <p>Add and manage learning materials.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🎥</div>
+        <h3>Videos</h3>
+        <p>Manage educational videos.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📝</div>
+        <h3>Exams</h3>
+        <p>Create and manage exams.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📊</div>
+        <h3>Results</h3>
+        <p>View student results.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">✅</div>
+        <h3>Attendance</h3>
+        <p>Monitor student attendance.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📢</div>
+        <h3>Announcements</h3>
+        <p>Send announcements to users.</p>
+      </div>
+
+    </div>
+
+    <button class="logout" onclick="logout()">
+      Logout
+    </button>
+
+  </div>
+
+<script>
+
+function logout() {
+  window.location.href = "index.html";
+}
+
+</script>
+
+</body>
+</html>
