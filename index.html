@@ -196,6 +196,16 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
 
   }
 
+    else if (
+  username === "student" &&
+  password === "1234" &&
+  role === "student"
+) {
+
+  window.location.href = "student.html";
+
+}
+
   else {
 
     document.getElementById("message").innerHTML =
