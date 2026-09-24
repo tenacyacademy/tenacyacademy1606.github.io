@@ -1,0 +1,189 @@
+[9/24/2026 1:04 PM] Paulos Bunaro: <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PAUL ACADEMY | Students</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fc;
+      color: #172b4d;
+    }
+    .navbar {
+      background: #061d46;
+      color: white;
+      padding: 18px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+    .logo { font-size: 24px; font-weight: bold; }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 30px;
+    }
+    .form-box, .list-box {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      margin-top: 25px;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+    }
+    h1 { margin-bottom: 8px; }
+    label {
+      display: block;
+      margin: 15px 0 7px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #061d46;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .submit-btn { margin-top: 20px; }
+    .back-btn { background: #475467; }
+    .message {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    .student-row {
+      border: 1px solid #e4e7ec;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 12px;
+    }
+    .student-row p {
+      color: #667085;
+      margin: 7px 0;
+    }
+    @media (max-width: 500px) {
+      .container { padding: 18px; }
+      .navbar { padding: 15px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="logo">PAUL ACADEMY</div>
+    <div>Admin</div>
+  </div>
+
+  <div class="container">
+    <h1>Student Management</h1>
+    <p>Add and manage students.</p>
+
+    <div class="form-box">
+      <h2>Add New Student</h2>
+
+      <form id="studentForm">
+        <label>Student Name</label>
+        <input type="text" id="studentName"
+               placeholder="Enter student name" required>
+
+        <label>Grade</label>
+        <select id="grade" required>
+          <option value="">Select Grade</option>
+          <option>Grade 1</option>
+          <option>Grade 2</option>
+          <option>Grade 3</option>
+          <option>Grade 4</option>
+          <option>Grade 5</option>
+          <option>Grade 6</option>
+          <option>Grade 7</option>
+          <option>Grade 8</option>
+          <option>Grade 9</option>
+          <option>Grade 10</option>
+          <option>Grade 11</option>
+          <option>Grade 12</option>
+        </select>
+
+        <label>Parent Name</label>
+        <input type="text" id="parentName"
+               placeholder="Enter parent name" required>
+
+        <label>Email</label>
+        <input type="email" id="email"
+               placeholder="Enter email" required>
+
+        <button class="submit-btn" type="submit">
+          Add Student
+        </button>
+      </form>
+
+      <div class="message" id="message"></div>
+    </div>
+
+    <div class="list-box">
+      <h2>Registered Students</h2>
+      <div id="studentList">
+        No students registered yet.
+      </div>
+    </div>
+
+    <button class="back-btn" onclick="location.href='admin.html'">
+      Back to Admin
+    </button>
+  </div>
+
+  <script>
+    const form = document.getElementById("studentForm");
+    const message = document.getElementById("message");
+    const list = document.getElementById("studentList");
+
+    let students = [];
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const student = {
+        name: document.getElementById("studentName").value,
+        grade: document.getElementById("grade").value,
+        parent: document.getElementById("parentName").value,
+        email: document.getElementById("email").value
+      };
+
+      students.push(student);
+      displayStudents();
+[9/24/2026 1:04 PM] Paulos Bunaro: message.textContent = "Student added successfully!";
+      message.style.color = "green";
+      form.reset();
+    });
+
+    function displayStudents() {
+      list.innerHTML = "";
+
+      students.forEach(function(student, index) {
+        const row = document.createElement("div");
+        row.className = "student-row";
+
+        row.innerHTML = 
+          <strong>${index + 1}. ${student.name}</strong>
+          <p>Grade: ${student.grade}</p>
+          <p>Parent: ${student.parent}</p>
+          <p>Email: ${student.email}</p>
+        ;
+
+        list.appendChild(row);
+      });
+    }
+  </script>
+
+</body>
+</html>
