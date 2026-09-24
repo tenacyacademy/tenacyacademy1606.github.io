@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PAUL ACADEMY | Parent Dashboard</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f7fc;
+      color: #172b4d;
+    }
+
+    .navbar {
+      background: #061d46;
+      color: white;
+      padding: 18px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 30px;
+    }
+
+    h1 {
+      margin-bottom: 8px;
+    }
+
+    .welcome {
+      color: #667085;
+      margin-bottom: 30px;
+    }
+
+    .student {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 25px;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+    }
+
+    .student h2 {
+      margin-bottom: 8px;
+    }
+
+    .student p {
+      color: #667085;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .icon {
+      font-size: 35px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: #667085;
+      font-size: 14px;
+    }
+
+    .logout {
+      margin-top: 35px;
+      padding: 12px 22px;
+      background: #d92d20;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="navbar">
+    <div class="logo">PAUL ACADEMY</div>
+    <div>👨‍👩‍👧 Parent</div>
+  </div>
+
+  <div class="container">
+
+    <h1>Parent Dashboard</h1>
+
+    <p class="welcome">
+      Welcome. Monitor your child's learning progress.
+    </p>
+
+    <div class="student">
+      <h2>👦 My Child</h2>
+      <p>Student Name: Example Student</p>
+      <p>Grade: Grade 8</p>
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="icon">📊</div>
+        <h3>Results</h3>
+        <p>View your child's exam results.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">✅</div>
+        <h3>Attendance</h3>
+        <p>Check your child's attendance.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📝</div>
+        <h3>Homework</h3>
+        <p>See assigned homework.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📚</div>
+        <h3>Lessons</h3>
+        <p>Access your child's lessons.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🎥</div>
+        <h3>Videos</h3>
+        <p>Watch educational videos.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📅</div>
+        <h3>Timetable</h3>
+        <p>View your child's class schedule.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">💬</div>
+        <h3>Messages</h3>
+        <p>Communicate with tutors.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📢</div>
+        <h3>Announcements</h3>
+        <p>View school announcements.</p>
+      </div>
+
+    </div>
+
+    <button class="logout" onclick="logout()">
+      Logout
+    </button>
+
+  </div>
+
+<script>
+
+function logout() {
+  window.location.href = "index.html";
+}
+
+</script>
+
+</body>
+</html>
