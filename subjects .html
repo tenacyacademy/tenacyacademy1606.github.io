@@ -1,0 +1,296 @@
+[9/25/2026 1:43 PM] Paulos Bunaro: <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PAUL ACADEMY | Subjects</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f5f8ff;
+    color:#10244a;
+}
+
+.header{
+    background:#061d46;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+.header h1{
+    margin:0;
+}
+
+.container{
+    max-width:1100px;
+    margin:30px auto;
+    padding:20px;
+}
+
+.back{
+    display:inline-block;
+    margin-bottom:20px;
+    background:#061d46;
+    color:white;
+    padding:10px 18px;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+.subjects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.subject{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.subject:hover{
+    transform:translateY(-5px);
+}
+
+.icon{
+    font-size:40px;
+}
+
+.subject h3{
+    margin:12px 0 5px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>PAUL ACADEMY</h1>
+    <p id="gradeTitle">Subjects</p>
+</div>
+
+<div class="container">
+
+<a href="grades.html" class="back">← Back to Grades</a>
+
+<h2 id="title">Subjects</h2>
+
+<div class="subjects" id="subjectList"></div>
+
+</div>
+
+<script>
+
+const grade = localStorage.getItem("selectedGrade");
+
+const subjects = {
+
+1: [
+"Mathematics",
+"English",
+"Amharic",
+"Environmental Science",
+"Wolaitic",
+"Spoken English"
+],
+
+2: [
+"Mathematics",
+"English",
+"Amharic",
+"Environmental Science",
+"Moral Education",
+"Health & Physical Education",
+"ICT"
+],
+
+3: [
+"Mathematics",
+"English",
+"Amharic",
+"Environmental Science",
+"Moral Education",
+"Health & Physical Education",
+"ICT"
+],
+
+4: [
+"Mathematics",
+"English",
+"Amharic",
+"Environmental Science",
+"Moral Education",
+"Health & Physical Education",
+"ICT"
+],
+
+5: [
+"Mathematics",
+"English",
+"Amharic",
+"Environmental Science",
+"Moral Education",
+"Health & Physical Education",
+"ICT"
+],
+
+6: [
+"Mathematics",
+"English",
+"Amharic",
+"Environmental Science",
+"Moral Education",
+"Health & Physical Education",
+"ICT",
+"Wolait",
+"Sidama"
+],
+
+7: [
+"Mathematics",
+"English",
+"Amharic",
+"General Science",
+"Social Studies",
+"Citizenship",
+"Information Technology",
+"Performing & Visual Art",
+"Health & Physical Education"
+],
+
+8: [
+"Mathematics",
+"English",
+"Amharic",
+"General Science",
+"Social Studies",
+"Citizenship",
+"Information Technology",
+"Performing & Visual Art",
+"Health & Physical Education"
+],
+
+9: [
+"Mathematics",
+"English",
+"Amharic",
+"Physics",
+"Chemistry",
+"Biology",
+"Geography",
+"History",
+"Civics",
+"Information Technology"
+],
+
+10: [
+"Mathematics",
+"English",
+"Amharic",
+"Physics",
+"Chemistry",
+"Biology",
+"Geography",
+"History",
+"Civics",
+"Information Technology"
+],
+
+11: [
+"Mathematics",
+"English",
+"Amharic",
+"Physics",
+"Chemistry",
+"Biology",
+"Geography",
+"History",
+"Civics",
+"Information Technology"
+],
+
+12: [
+"Mathematics",
+"English",
+"Amharic",
+"Physics",
+"Chemistry",
+"Biology",
+"Geography",
+"History",
+"Civics",
+"Information Technology"
+]
+
+};
+
+const icons = [
+"📐",
+"📖",
+"📝",
+"🔬",
+"🌍",
+"💻",
+"🎨",
+"🏃",
+"📚",
+"🧪"
+];
+
+if(!grade){
+
+    document.getElementById("title").innerHTML =
+    "Please select a grade first.";
+
+}else{
+
+    document.getElementById("gradeTitle").innerHTML =
+    "Grade " + grade + " Subjects";
+
+    document.getElementById("title").innerHTML =
+    "Grade " + grade + " — Subjects";
+
+    const list = subjects[grade] || [];
+
+    list.forEach((subject,index)=>{
+
+        const div = document.createElement("div");
+
+        div.className = "subject";
+
+        div.innerHTML = 
+            <div class="icon">
+                ${icons[index % icons.length]}
+            </div>
+
+            <h3>${subject}</h3>
+
+            <p>Open Subject</p>
+        ;
+
+        div.onclick = function(){
+
+            localStorage.setItem("selectedSubject", subject);
+
+            window.location.href = "lessons.html";
+
+        };
+
+        document.getElementById("subjectList")
+        .appendChild(div);
+[9/25/2026 1:43 PM] Paulos Bunaro: });
+}
+
+</script>
+
+</body>
+</html>
