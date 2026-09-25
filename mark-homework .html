@@ -1,0 +1,289 @@
+[9/25/2026 2:40 PM] Paulos Bunaro: <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PAUL ACADEMY | Mark Homework</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f7fc;
+    color:#10244a;
+}
+
+header{
+    background:#061d46;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+header h1{
+    margin:0;
+    color:#fbbd24;
+}
+
+header p{
+    margin:6px 0 0;
+}
+
+.container{
+    max-width:1000px;
+    margin:30px auto;
+    padding:0 20px;
+}
+
+.back{
+    display:inline-block;
+    margin-bottom:20px;
+    text-decoration:none;
+    background:#061d46;
+    color:white;
+    padding:10px 16px;
+    border-radius:8px;
+}
+
+.homework{
+    background:white;
+    padding:25px;
+    margin-bottom:25px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.homework h2{
+    margin-top:0;
+}
+
+.info{
+    background:#eef4ff;
+    padding:12px;
+    border-radius:8px;
+    margin:12px 0;
+}
+
+.question{
+    background:#f8f9fb;
+    padding:15px;
+    border-radius:8px;
+    margin-bottom:20px;
+}
+
+.answer{
+    border-top:1px solid #ddd;
+    margin-top:20px;
+    padding-top:20px;
+}
+
+.answer-box{
+    background:#fff8e1;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+label{
+    display:block;
+    font-weight:bold;
+    margin-top:12px;
+    margin-bottom:5px;
+}
+
+input, textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+}
+
+textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+button{
+    margin-top:15px;
+    padding:12px 20px;
+    border:none;
+    border-radius:8px;
+    background:#061d46;
+    color:white;
+    cursor:pointer;
+    font-size:15px;
+}
+
+button:hover{
+    background:#0b3478;
+}
+
+.no-data{
+    background:white;
+    padding:30px;
+    text-align:center;
+    border-radius:15px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>PAUL ACADEMY</h1>
+    <p>Tutor Homework Marking</p>
+</header>
+
+<div class="container">
+
+<a class="back" href="tutor.html">← Back to Tutor Dashboard</a>
+
+<h2>📝 Student Homework Submissions</h2>
+
+<div id="homeworkList"></div>
+
+</div>
+
+<script>
+
+let homework =
+    JSON.parse(localStorage.getItem("paulHomework")) || [];
+
+function displayHomework(){
+
+    const container =
+        document.getElementById("homeworkList");
+
+    container.innerHTML = "";
+
+    let hasSubmission = false;
+
+    homework.forEach((hw, hwIndex) => {
+
+        if(!hw.answers || hw.answers.length === 0){
+            return;
+        }
+
+        hasSubmission = true;
+
+        let answersHTML = "";
+
+        hw.answers.forEach((answer, answerIndex) => {
+
+            answersHTML += 
+            <div class="answer">
+
+                <h3>👨‍🎓 Student: ${answer.student}</h3>
+
+                <div class="answer-box">
+                    <strong>Student Answer:</strong>
+
+                    <p>
+                        ${answer.answer}
+                    </p>
+                </div>
+
+                <label>Mark</label>
+
+                <input
+                    type="text"
+                    id="mark-${hwIndex}-${answerIndex}"
+                    value="${answer.mark || ""}"
+                    placeholder="Example: 85/100"
+                >
+
+                <label>Feedback</label>
+
+                <textarea
+                    id="feedback-${hwIndex}-${answerIndex}"
+                    placeholder="Write feedback for the student..."
+                >${answer.feedback || ""}</textarea>
+
+                <button
+                    onclick="saveMark(${hwIndex}, ${answerIndex})">
+                    💾 Save Mark & Feedback
+                </button>
+
+            </div>
+            ;
+        });
+
+        container.innerHTML += `
+
+        <div class="homework">
+
+            <h2>${hw.title}</h2>
+
+            <div class="info">
+                <strong>Grade:</strong> ${hw.grade}
+                &nbsp; | &nbsp;
+                <strong>Subject:</strong> ${hw.subject}
+            </div>
+[9/25/2026 2:40 PM] Paulos Bunaro: <div class="question">
+                <strong>Homework Questions / Instructions:</strong>
+
+                <p>${hw.questions}</p>
+            </div>
+
+            ${answersHTML}
+
+        </div>
+
+        ;
+    });
+
+    if(!hasSubmission){
+
+        container.innerHTML = 
+            <div class="no-data">
+                <h2>📭 No Submissions Yet</h2>
+                <p>
+                    Students have not submitted any homework yet.
+                </p>
+            </div>
+        ;
+    }
+}
+
+
+function saveMark(hwIndex, answerIndex){
+
+    const mark =
+        document.getElementById(
+            mark-${hwIndex}-${answerIndex}
+        ).value;
+
+    const feedback =
+        document.getElementById(
+            feedback-${hwIndex}-${answerIndex}`
+        ).value;
+
+    homework[hwIndex].answers[answerIndex].mark =
+        mark;
+
+    homework[hwIndex].answers[answerIndex].feedback =
+        feedback;
+
+    localStorage.setItem(
+        "paulHomework",
+        JSON.stringify(homework)
+    );
+
+    alert("✅ Mark and feedback saved successfully!");
+
+    displayHomework();
+}
+
+
+displayHomework();
+
+</script>
+
+</body>
+</html>
