@@ -1,0 +1,361 @@
+[9/25/2026 2:02 PM] Paulos Bunaro: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PAUL ACADEMY | Manage Lessons</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f5f8ff;
+    color:#10244a;
+}
+
+.header{
+    background:#061d46;
+    color:white;
+    padding:25px;
+    text-align:center;
+}
+
+.container{
+    max-width:1100px;
+    margin:30px auto;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    margin-bottom:25px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    box-sizing:border-box;
+    padding:12px;
+    margin:8px 0 15px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+textarea{
+    min-height:150px;
+}
+
+button{
+    background:#061d46;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.lesson{
+    border:1px solid #ddd;
+    padding:18px;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+.delete{
+    background:#c62828;
+    margin-top:10px;
+}
+
+.back{
+    display:inline-block;
+    margin-bottom:20px;
+    background:#061d46;
+    color:white;
+    padding:10px 18px;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>PAUL ACADEMY</h1>
+
+<p>Admin — Lesson Management</p>
+
+</div>
+
+
+<div class="container">
+
+<a href="admin.html" class="back">
+← Back to Admin Dashboard
+</a>
+
+
+<!-- ADD LESSON -->
+
+<div class="card">
+
+<h2>➕ Add New Lesson</h2>
+
+<label>Grade</label>
+
+<select id="grade">
+
+<option value="1">Grade 1</option>
+<option value="2">Grade 2</option>
+<option value="3">Grade 3</option>
+<option value="4">Grade 4</option>
+<option value="5">Grade 5</option>
+<option value="6">Grade 6</option>
+<option value="7">Grade 7</option>
+<option value="8">Grade 8</option>
+<option value="9">Grade 9</option>
+<option value="10">Grade 10</option>
+<option value="11">Grade 11</option>
+<option value="12">Grade 12</option>
+
+</select>
+
+
+<label>Subject</label>
+
+<input
+type="text"
+id="subject"
+placeholder="Example: Mathematics"
+>
+
+
+<label>Lesson Title</label>
+
+<input
+type="text"
+id="title"
+placeholder="Example: Introduction to Algebra"
+>
+
+
+<label>Lesson Note</label>
+
+<textarea
+id="note"
+placeholder="Write the lesson explanation here..."
+></textarea>
+
+
+<label>Video URL</label>
+
+<input
+type="text"
+id="video"
+placeholder="Paste YouTube video URL"
+>
+
+
+<button onclick="addLesson()">
+Save Lesson
+</button>
+
+</div>
+
+
+<!-- LESSON LIST -->
+
+<div class="card">
+
+<h2>📚 Added Lessons</h2>
+
+<div id="lessonList">
+
+<p>No lessons added yet.</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+let lessons =
+JSON.parse(localStorage.getItem("paulAcademyLessons"))
+|| [];
+
+
+function addLesson(){
+
+const grade =
+document.getElementById("grade").value;
+
+const subject =
+document.getElementById("subject").value.trim();
+
+const title =
+document.getElementById("title").value.trim();
+
+const note =
+document.getElementById("note").value.trim();
+
+const video =
+document.getElementById("video").value.trim();
+
+
+if(!subject  !title  !note){
+
+alert("Please fill Grade, Subject, Title and Note.");
+
+return;
+
+}
+
+
+const newLesson = {
+
+id:Date.now(),
+
+grade:grade,
+
+subject:subject,
+
+title:title,
+
+note:note,
+
+video:video
+
+};
+
+
+lessons.push(newLesson);
+
+
+localStorage.setItem(
+"paulAcademyLessons",
+JSON.stringify(lessons)
+);
+
+
+document.getElementById("subject").value="";
+document.getElementById("title").value="";
+document.getElementById("note").value="";
+document.getElementById("video").value="";
+
+
+displayLessons();
+
+alert("✅ Lesson saved successfully!");
+
+}
+
+
+function displayLessons(){
+
+const list =
+document.getElementById("lessonList");
+
+
+if(lessons.length === 0){
+
+list.innerHTML =
+"<p>No lessons added yet.</p>";
+
+return;
+
+}
+
+
+list.innerHTML="";
+
+
+lessons.forEach((lesson,index)=>{
+
+const div =
+document.createElement("div");
+
+div.className="lesson";
+
+
+div.innerHTML=`
+
+<h3>
+${lesson.title}
+</h3>
+
+<p>
+<strong>Grade:</strong>
+${lesson.grade}
+</p>
+
+<p>
+<strong>Subject:</strong>
+${lesson.subject}
+</p>
+[9/25/2026 2:02 PM] Paulos Bunaro: <p>
+<strong>Note:</strong>
+${lesson.note}
+</p>
+
+<p>
+<strong>Video:</strong>
+${lesson.video || "No video added"}
+</p>
+
+<button
+class="delete"
+onclick="deleteLesson(${index})">
+
+Delete Lesson
+
+</button>
+
+`;
+
+
+list.appendChild(div);
+
+});
+
+}
+
+
+function deleteLesson(index){
+
+if(confirm("Delete this lesson?")){
+
+lessons.splice(index,1);
+
+localStorage.setItem(
+"paulAcademyLessons",
+JSON.stringify(lessons)
+);
+
+displayLessons();
+
+}
+
+}
+
+
+displayLessons();
+
+</script>
+
+</body>
+
+</html>
