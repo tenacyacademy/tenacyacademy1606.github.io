@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PAUL ACADEMY | Grades</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f5f8ff;
+    color:#10244a;
+}
+
+.header{
+    background:#061d46;
+    color:white;
+    padding:22px;
+    text-align:center;
+}
+
+.header h1{
+    margin:0;
+}
+
+.container{
+    max-width:1100px;
+    margin:30px auto;
+    padding:20px;
+}
+
+.grades{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+}
+
+.grade{
+    background:white;
+    padding:30px 20px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.grade:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.grade .icon{
+    font-size:40px;
+}
+
+.grade h2{
+    margin:12px 0 5px;
+}
+
+.back{
+    display:inline-block;
+    margin-bottom:20px;
+    background:#061d46;
+    color:white;
+    padding:10px 18px;
+    border-radius:8px;
+    text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>PAUL ACADEMY</h1>
+    <p>Grades 1–12</p>
+</div>
+
+<div class="container">
+
+<a href="admin.html" class="back">← Back to Dashboard</a>
+
+<h2>Select Grade</h2>
+
+<div class="grades">
+
+<div class="grade" onclick="openGrade(1)">
+<div class="icon">📘</div>
+<h2>Grade 1</h2>
+<p>View Subjects</p>
+</div>
+
+<div class="grade" onclick="openGrade(2)">
+<div class="icon">📗</div>
+<h2>Grade 2</h2>
+<p>View Subjects</p>
+</div>
+
+<div class="grade" onclick="openGrade(3)">
+<div class="icon">📕</div>
+<h2>Grade 3</h2>
+<p>View Subjects</p>
+</div>
+
+<div class="grade" onclick="openGrade(4)">
+<div class="icon">📙</div>
+<h2>Grade 4</h2>
+<p>View Subjects</p>
+</div>
+
+<div class="grade" onclick="openGrade(5)">
+<div class="icon">📚</div>
+<h2>Grade 5</h2>
+<p>View Subjects</p>
+</div>
+
+<div class="grade" onclick="openGrade(6)">
+<div class="icon">📚</div>
+<h2>Grade 6</h2>
+<p>View Subjects</p>
+</div>
+
+<div class="grade" onclick="openGrade(7)">
+<div class="icon">🎓</div>
+<h2>Grade 7</h2>
+<p>View Subjects</p>
+</div>
+
+<div class="grade" onclick="openGrade(8)">
+<div class="icon">🎓</div>
+<h2>Grade 8</h2>
+<p>View Subjects</p>
+</div>
+
+<div class="grade" onclick="openGrade(9)">
+<div class="icon">📖</div>
+<h2>Grade 9</h2>
+<p>View Subjects</p>
+</div>
+
+<div class="grade" onclick="openGrade(10)">
+<div class="icon">📖</div>
+<h2>Grade 10</h2>
+<p>View Subjects</p>
+</div>
+
+<div class="grade" onclick="openGrade(11)">
+<div class="icon">🎯</div>
+<h2>Grade 11</h2>
+<p>View Subjects</p>
+</div>
+
+<div class="grade" onclick="openGrade(12)">
+<div class="icon">🏆</div>
+<h2>Grade 12</h2>
+<p>View Subjects</p>
+</div>
+
+</div>
+</div>
+
+<script>
+
+function openGrade(grade){
+
+    localStorage.setItem("selectedGrade", grade);
+
+    window.location.href = "subjects.html";
+}
+
+</script>
+
+</body>
+</html>
