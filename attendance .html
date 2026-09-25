@@ -1,0 +1,445 @@
+[9/25/2026 2:51 PM] Paulos Bunaro: <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PAUL ACADEMY | Attendance</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f7fc;
+    color:#10244a;
+}
+
+header{
+    background:#061d46;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+header h1{
+    margin:0;
+    color:#fbbd24;
+}
+
+.container{
+    max-width:1000px;
+    margin:30px auto;
+    padding:20px;
+}
+
+.back{
+    display:inline-block;
+    background:#061d46;
+    color:white;
+    padding:10px 16px;
+    border-radius:8px;
+    text-decoration:none;
+    margin-bottom:20px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    margin-bottom:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+select,
+input{
+    width:100%;
+    padding:12px;
+    margin-top:6px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+}
+
+.student{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    padding:15px;
+    margin:10px 0;
+    background:#f7f9fc;
+    border-radius:10px;
+}
+
+.student-info{
+    flex:1;
+}
+
+.student-info strong{
+    display:block;
+    margin-bottom:5px;
+}
+
+.status{
+    width:160px;
+}
+
+button{
+    background:#061d46;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:15px;
+}
+
+button:hover{
+    background:#0b3478;
+}
+
+.success{
+    background:#e8f7ee;
+    color:#176b36;
+    padding:15px;
+    border-radius:8px;
+    margin-top:15px;
+    display:none;
+}
+
+.attendance-record{
+    border-top:1px solid #ddd;
+    padding:15px 0;
+}
+
+@media(max-width:650px){
+
+    .student{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .status{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>PAUL ACADEMY</h1>
+    <p>Student Attendance System</p>
+</header>
+
+<div class="container">
+
+<a class="back" href="tutor.html">← Back to Tutor Dashboard</a>
+
+<div class="card">
+
+<h2>📅 Take Attendance</h2>
+
+<label>Date</label>
+<input type="date" id="attendanceDate">
+
+<label>Grade</label>
+
+<select id="grade">
+    <option value="1">Grade 1</option>
+    <option value="2">Grade 2</option>
+    <option value="3">Grade 3</option>
+    <option value="4">Grade 4</option>
+    <option value="5">Grade 5</option>
+    <option value="6">Grade 6</option>
+    <option value="7">Grade 7</option>
+    <option value="8" selected>Grade 8</option>
+    <option value="9">Grade 9</option>
+    <option value="10">Grade 10</option>
+    <option value="11">Grade 11</option>
+    <option value="12">Grade 12</option>
+</select>
+
+<label>Subject</label>
+
+<input
+    type="text"
+    id="subject"
+    placeholder="Example: Mathematics"
+>
+
+</div>
+
+<div class="card">
+
+<h2>👨‍🎓 Students</h2>
+
+<div id="students"></div>
+
+<button onclick="saveAttendance()">
+    💾 Save Attendance
+</button>
+
+<div id="message" class="success">
+    Attendance saved successfully!
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>📊 Attendance Records</h2>
+
+<div id="records"></div>
+
+</div>
+
+</div>
+
+<script>
+
+const students = [
+
+    {
+        id:"ST001",
+        name:"Example Student",
+        grade:"8"
+    },
+
+    {
+        id:"ST002",
+        name:"Abebe Student",
+        grade:"8"
+    },
+
+    {
+        id:"ST003",
+        name:"Sara Student",
+        grade:"8"
+    }
+
+];
+
+
+function showStudents(){
+
+    const grade =
+        document.getElementById("grade").value;
+
+    const container =
+        document.getElementById("students");
+
+    container.innerHTML="";
+
+    const filtered =
+        students.filter(
+            student => student.grade === grade
+        );
+
+    if(filtered.length === 0){
+
+        container.innerHTML =
+            "<p>No students found for this grade.</p>";
+
+        return;
+    }
+
+    filtered.forEach(student => {
+
+        container.innerHTML += `
+
+        <div class="student">
+
+            <div class="student-info">
+[9/25/2026 2:51 PM] Paulos Bunaro: <strong>
+                    ${student.name}
+                </strong>
+
+                <span>
+                    Student ID: ${student.id}
+                </span>
+
+            </div>
+
+            <select
+                class="status"
+                data-id="${student.id}"
+            >
+
+                <option value="Present">
+                    Present
+                </option>
+
+                <option value="Absent">
+                    Absent
+                </option>
+
+                <option value="Late">
+                    Late
+                </option>
+
+            </select>
+
+        </div>
+
+        ;
+
+    });
+
+}
+
+
+function saveAttendance(){
+
+    const date =
+        document.getElementById("attendanceDate").value;
+
+    const grade =
+        document.getElementById("grade").value;
+
+    const subject =
+        document.getElementById("subject").value;
+
+    if(!date){
+
+        alert("Please select a date.");
+
+        return;
+    }
+
+    if(!subject){
+
+        alert("Please enter the subject.");
+
+        return;
+    }
+
+    const statuses =
+        document.querySelectorAll(".status");
+
+    let records =
+        JSON.parse(
+            localStorage.getItem("paulAttendance")
+        ) || [];
+
+    statuses.forEach(status => {
+
+        records.push({
+
+            date:date,
+
+            grade:grade,
+
+            subject:subject,
+
+            studentId:
+                status.dataset.id,
+
+            status:
+                status.value
+
+        });
+
+    });
+
+    localStorage.setItem(
+        "paulAttendance",
+        JSON.stringify(records)
+    );
+
+    document.getElementById("message").style.display =
+        "block";
+
+    showRecords();
+
+}
+
+
+function showRecords(){
+
+    const container =
+        document.getElementById("records");
+
+    const records =
+        JSON.parse(
+            localStorage.getItem("paulAttendance")
+        ) || [];
+
+    container.innerHTML="";
+
+    if(records.length === 0){
+
+        container.innerHTML =
+            "<p>No attendance records yet.</p>";
+
+        return;
+    }
+
+    records.slice().reverse().forEach(record => {
+
+        const student =
+            students.find(
+                s => s.id === record.studentId
+            );
+
+        const studentName =
+            student ? student.name : record.studentId;
+
+        container.innerHTML += 
+
+        <div class="attendance-record">
+
+            <strong>
+                ${studentName}
+            </strong>
+
+            <p>
+                Date: ${record.date}
+            </p>
+
+            <p>
+                Grade: ${record.grade}
+                |
+                Subject: ${record.subject}
+            </p>
+
+            <p>
+                Status:
+                <strong>${record.status}</strong>
+            </p>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+
+document.getElementById("grade")
+    .addEventListener(
+        "change",
+        showStudents
+    );
+
+
+document.getElementById("attendanceDate")
+    .value =
+    new Date().toISOString().split("T")[0];
+
+
+showStudents();
+
+showRecords();
+
+</script>
+
+</body>
+</html>
