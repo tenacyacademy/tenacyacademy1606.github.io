@@ -1,0 +1,361 @@
+[9/25/2026 2:29 PM] Paulos Bunaro: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PAUL ACADEMY | Homework</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f5f8ff;
+    color:#10244a;
+}
+
+.header{
+    background:#061d46;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+.container{
+    max-width:1100px;
+    margin:30px auto;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    margin-bottom:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    box-sizing:border-box;
+    padding:12px;
+    margin:8px 0 15px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+textarea{
+    min-height:130px;
+}
+
+button{
+    background:#061d46;
+    color:white;
+    border:none;
+    padding:11px 18px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.homework{
+    border:1px solid #ddd;
+    padding:20px;
+    border-radius:12px;
+    margin-top:15px;
+}
+
+.answer{
+    margin-top:15px;
+    padding-top:15px;
+    border-top:1px solid #ddd;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>PAUL ACADEMY</h1>
+
+<p>Homework & Assignment System</p>
+
+</div>
+
+
+<div class="container">
+
+
+<!-- CREATE HOMEWORK -->
+
+<div class="card">
+
+<h2>➕ Create Homework</h2>
+
+<label>Grade</label>
+
+<select id="grade">
+
+<option value="1">Grade 1</option>
+<option value="2">Grade 2</option>
+<option value="3">Grade 3</option>
+<option value="4">Grade 4</option>
+<option value="5">Grade 5</option>
+<option value="6">Grade 6</option>
+<option value="7">Grade 7</option>
+<option value="8">Grade 8</option>
+<option value="9">Grade 9</option>
+<option value="10">Grade 10</option>
+<option value="11">Grade 11</option>
+<option value="12">Grade 12</option>
+
+</select>
+
+
+<label>Subject</label>
+
+<input
+id="subject"
+placeholder="Example: Mathematics"
+>
+
+
+<label>Homework Title</label>
+
+<input
+id="title"
+placeholder="Example: Algebra Exercise"
+>
+
+
+<label>Questions / Instructions</label>
+
+<textarea
+id="questions"
+placeholder="Write homework questions here..."
+></textarea>
+
+
+<button onclick="createHomework()">
+
+Save Homework
+
+</button>
+
+</div>
+
+
+<!-- HOMEWORK LIST -->
+
+<div class="card">
+
+<h2>📚 Homework</h2>
+
+<div id="homeworkList"></div>
+
+</div>
+
+</div>
+
+
+<script>
+
+let homework =
+JSON.parse(
+localStorage.getItem("paulHomework")
+) || [];
+
+
+function createHomework(){
+
+const grade =
+document.getElementById("grade").value;
+
+const subject =
+document.getElementById("subject").value.trim();
+
+const title =
+document.getElementById("title").value.trim();
+
+const questions =
+document.getElementById("questions").value.trim();
+
+
+if(!subject  !title  !questions){
+
+alert("Please fill all fields.");
+
+return;
+
+}
+
+
+homework.push({
+
+id:Date.now(),
+
+grade:grade,
+
+subject:subject,
+
+title:title,
+
+questions:questions,
+
+answers:[]
+
+});
+
+
+localStorage.setItem(
+"paulHomework",
+JSON.stringify(homework)
+);
+
+
+document.getElementById("subject").value="";
+document.getElementById("title").value="";
+document.getElementById("questions").value="";
+
+
+displayHomework();
+
+alert("✅ Homework created!");
+
+}
+
+
+function displayHomework(){
+
+const list =
+document.getElementById("homeworkList");
+
+list.innerHTML="";
+
+
+if(homework.length === 0){
+
+list.innerHTML =
+"<p>No homework available.</p>";
+
+return;
+
+}
+
+
+homework.forEach((hw,index)=>{
+
+const div =
+document.createElement("div");
+
+div.className="homework";
+
+
+div.innerHTML=
+
+<h3>
+${hw.title}
+</h3>
+
+<p>
+<strong>Grade:</strong>
+${hw.grade}
+</p>
+
+<p>
+<strong>Subject:</strong>
+${hw.subject}
+</p>
+
+<p>
+<strong>Questions:</strong>
+</p>
+
+<p>
+${hw.questions}
+</p>
+
+
+<div class="answer">
+
+<h4>✍️ Student Answer</h4>
+
+<textarea
+id="answer${index}"
+placeholder="Write your answer here..."
+></textarea>
+
+<button
+onclick="submitAnswer(${index})">
+
+Submit Answer
+
+</button>
+
+</div>
+
+;
+
+
+list.appendChild(div);
+
+});
+
+}
+
+
+function submitAnswer(index){
+
+const answer =
+document.getElementById(
+"answer" + index
+).value.trim();
+
+
+if(!answer){
+
+alert("Please write your answer.");
+
+return;
+
+}
+[9/25/2026 2:29 PM] Paulos Bunaro: homework[index].answers.push({
+
+student:"Example Student",
+
+answer:answer,
+
+mark:"Not marked",
+
+feedback:"Waiting for tutor feedback."
+
+});
+
+
+localStorage.setItem(
+"paulHomework",
+JSON.stringify(homework)
+);
+
+
+alert(
+"✅ Your answer has been submitted."
+);
+
+}
+
+
+displayHomework();
+
+</script>
+
+</body>
+
+</html>
