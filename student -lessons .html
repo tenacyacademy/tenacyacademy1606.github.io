@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PAUL ACADEMY | Student Lessons</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f5f8ff;
+    color:#10244a;
+}
+
+.header{
+    background:#061d46;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+.container{
+    max-width:1100px;
+    margin:30px auto;
+    padding:20px;
+}
+
+.back{
+    display:inline-block;
+    margin-bottom:20px;
+    background:#061d46;
+    color:white;
+    padding:10px 18px;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    margin-bottom:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.lesson{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    margin-top:15px;
+    box-shadow:0 3px 10px rgba(0,0,0,.07);
+}
+
+button{
+    background:#061d46;
+    color:white;
+    border:none;
+    padding:11px 18px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.video{
+    margin-top:15px;
+    background:#111;
+    color:white;
+    min-height:220px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:10px;
+}
+
+.note{
+    line-height:1.8;
+    white-space:pre-line;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>PAUL ACADEMY</h1>
+
+<p>Student Learning Center</p>
+
+</div>
+
+
+<div class="container">
+
+<a href="student.html" class="back">
+← Student Dashboard
+</a>
+
+
+<div class="card">
+
+<h2>📚 My Lessons</h2>
+
+<p>
+Select a lesson to start learning.
+</p>
+
+</div>
+
+
+<div id="lessonList"></div>
+
+</div>
+
+
+<script>
+
+const studentGrade = "8";
+
+
+let lessons =
+JSON.parse(
+localStorage.getItem("paulAcademyLessons")
+) || [];
+
+
+const myLessons =
+lessons.filter(
+lesson => lesson.grade === studentGrade
+);
+
+
+const list =
+document.getElementById("lessonList");
+
+
+if(myLessons.length === 0){
+
+list.innerHTML = 
+
+<div class="card">
+
+<h3>No lessons available yet.</h3>
+
+<p>
+Your tutor or administrator has not
+added lessons for your grade yet.
+</p>
+
+</div>
+
+;
+
+}else{
+
+myLessons.forEach((lesson,index)=>{
+
+const div =
+document.createElement("div");
+
+div.className="lesson";
+
+div.innerHTML = 
+
+<h2>
+${lesson.title}
+</h2>
+
+<p>
+<strong>Grade:</strong>
+${lesson.grade}
+</p>
+
+<p>
+<strong>Subject:</strong>
+${lesson.subject}
+</p>
+
+<button onclick="openLesson(${index})">
+
+📖 Start Lesson
+
+</button>
+
+<div id="content${index}"
+style="display:none;">
+
+<hr>
+
+<h3>📝 Lesson Note</h3>
+
+<div class="note">
+
+${lesson.note}
+
+</div>
+
+<h3>🎥 Learning Video</h3>
+
+<div class="video">
+
+${
+lesson.video
+?
+<a href="${lesson.video}"
+target="_blank"
+style="color:white;">
+▶ Open Video
+</a>
+:
+"No video available"
+}
+
+</div>
+
+<br>
+
+<button onclick="completeLesson(${index})">
+
+✅ Mark as Completed
+
+</button>
+
+</div>
+
+;
+
+list.appendChild(div);
+
+});
+
+}
+
+
+function openLesson(index){
+
+const content =
+document.getElementById(
+"content" + index
+);
+
+if(content.style.display === "none"){
+
+content.style.display="block";
+
+}else{
+
+content.style.display="none";
+
+}
+
+}
+
+
+function completeLesson(index){
+
+const lesson =
+myLessons[index];
+
+localStorage.setItem(
+
+"completed_" +
+lesson.grade +
+"_" +
+lesson.subject +
+"_" +
+lesson.title,
+
+"yes"
+
+);
+
+alert(
+"✅ Lesson completed successfully!"
+);
+
+}
+
+</script>
+
+</body>
+
+</html>
