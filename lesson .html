@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PAUL ACADEMY | Lesson</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f5f8ff;
+    color:#10244a;
+}
+
+.header{
+    background:#061d46;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+.header h1{
+    margin:0;
+}
+
+.container{
+    max-width:1000px;
+    margin:30px auto;
+    padding:20px;
+}
+
+.back{
+    display:inline-block;
+    margin-bottom:20px;
+    background:#061d46;
+    color:white;
+    padding:10px 18px;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    margin-bottom:25px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.video{
+    background:#000;
+    width:100%;
+    height:400px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:22px;
+}
+
+.note{
+    line-height:1.8;
+    font-size:17px;
+}
+
+.question{
+    background:#f5f8ff;
+    padding:15px;
+    margin:12px 0;
+    border-radius:10px;
+}
+
+button{
+    background:#061d46;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>PAUL ACADEMY</h1>
+
+<p id="courseInfo">
+Lesson
+</p>
+
+</div>
+
+
+<div class="container">
+
+<a href="lessons.html" class="back">
+← Back to Lessons
+</a>
+
+
+<!-- LESSON TITLE -->
+
+<div class="card">
+
+<h2 id="lessonTitle">
+Lesson
+</h2>
+
+<p id="lessonDescription">
+Loading lesson...
+</p>
+
+</div>
+
+
+<!-- VIDEO -->
+
+<div class="card">
+
+<h2>🎥 Learning Video</h2>
+
+<div class="video">
+
+▶ Video will be added here
+
+</div>
+
+<br>
+
+<button onclick="addVideo()">
+Add / Open Video
+</button>
+
+</div>
+
+
+<!-- NOTE -->
+
+<div class="card">
+
+<h2>📖 Lesson Note</h2>
+
+<div class="note">
+
+<h3>Introduction</h3>
+
+<p>
+Welcome to PAUL ACADEMY. In this lesson,
+students will learn the important concepts
+of the selected topic.
+</p>
+
+<h3>Learning Objectives</h3>
+
+<ul>
+
+<li>Understand the main idea of the lesson.</li>
+
+<li>Identify important concepts.</li>
+
+<li>Practice what you have learned.</li>
+
+<li>Answer questions related to the lesson.</li>
+
+</ul>
+
+<h3>Explanation</h3>
+
+<p>
+The teacher can write the complete lesson
+explanation here. Text, examples and
+important points can be added to this section.
+</p>
+
+<h3>Example</h3>
+
+<p>
+Example questions and step-by-step solutions
+can be added here.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- QUESTIONS -->
+
+<div class="card">
+
+<h2>📝 Practice Questions</h2>
+
+<div class="question">
+
+<strong>1.</strong>
+What is the main idea of this lesson?
+
+</div>
+
+<div class="question">
+
+<strong>2.</strong>
+Write one important concept you learned.
+
+</div>
+
+<div class="question">
+
+<strong>3.</strong>
+Solve an example related to the lesson.
+
+</div>
+
+</div>
+
+
+<!-- COMPLETION -->
+
+<div class="card">
+
+<h2>✅ Complete Lesson</h2>
+
+<p>
+After studying the lesson and answering
+the questions, mark this lesson as completed.
+</p>
+
+<button onclick="completeLesson()">
+Mark as Completed
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+const grade =
+localStorage.getItem("selectedGrade");
+
+const subject =
+localStorage.getItem("selectedSubject");
+
+const lesson =
+localStorage.getItem("selectedLesson");
+
+
+document.getElementById("courseInfo").innerHTML =
+"Grade " + grade +
+" • " + subject +
+" • Lesson " + lesson;
+
+
+document.getElementById("lessonTitle").innerHTML =
+subject + " - Lesson " + lesson;
+
+
+document.getElementById("lessonDescription").innerHTML =
+"You are studying Lesson " +
+lesson +
+" in Grade " +
+grade +
+" " +
+subject +
+".";
+
+
+function addVideo(){
+
+alert(
+"Video section is ready. " +
+"Next we will connect YouTube or uploaded videos."
+);
+
+}
+
+
+function completeLesson(){
+
+localStorage.setItem(
+"lessonCompleted_" + grade + "_" + subject + "_" + lesson,
+"yes"
+);
+
+alert(
+"✅ Lesson " +
+lesson +
+" completed!"
+);
+
+}
+
+</script>
+
+</body>
+
+</html>
