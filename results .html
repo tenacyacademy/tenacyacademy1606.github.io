@@ -1,0 +1,385 @@
+[9/25/2026 2:57 PM] Paulos Bunaro: <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PAUL ACADEMY | Results</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f7fc;
+    color:#10244a;
+}
+
+header{
+    background:#061d46;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+header h1{
+    margin:0;
+    color:#fbbd24;
+}
+
+.container{
+    max-width:1000px;
+    margin:30px auto;
+    padding:20px;
+}
+
+.back{
+    display:inline-block;
+    background:#061d46;
+    color:white;
+    text-decoration:none;
+    padding:10px 16px;
+    border-radius:8px;
+    margin-bottom:20px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    margin-bottom:25px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+label{
+    display:block;
+    font-weight:bold;
+    margin-top:12px;
+    margin-bottom:6px;
+}
+
+input,select{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+}
+
+button{
+    margin-top:18px;
+    padding:12px 20px;
+    border:0;
+    border-radius:8px;
+    background:#061d46;
+    color:white;
+    cursor:pointer;
+    font-size:15px;
+}
+
+button:hover{
+    background:#0b3478;
+}
+
+.result{
+    background:#f7f9fc;
+    padding:18px;
+    margin:12px 0;
+    border-radius:10px;
+    border-left:5px solid #fbbd24;
+}
+
+.mark{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.success{
+    display:none;
+    margin-top:15px;
+    padding:12px;
+    background:#e8f7ee;
+    color:#176b36;
+    border-radius:8px;
+}
+
+.no-data{
+    text-align:center;
+    padding:25px;
+    background:#f7f9fc;
+    border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>PAUL ACADEMY</h1>
+    <p>Student Results Management</p>
+</header>
+
+<div class="container">
+
+<a class="back" href="tutor.html">
+    ← Back to Tutor Dashboard
+</a>
+
+<div class="card">
+
+<h2>📊 Enter Student Result</h2>
+
+<label>Student</label>
+
+<select id="student">
+
+    <option value="ST001">
+        Example Student - ST001
+    </option>
+
+    <option value="ST002">
+        Abebe Student - ST002
+    </option>
+
+    <option value="ST003">
+        Sara Student - ST003
+    </option>
+
+</select>
+
+<label>Grade</label>
+
+<select id="grade">
+
+    <option>Grade 1</option>
+    <option>Grade 2</option>
+    <option>Grade 3</option>
+    <option>Grade 4</option>
+    <option>Grade 5</option>
+    <option>Grade 6</option>
+    <option>Grade 7</option>
+    <option selected>Grade 8</option>
+    <option>Grade 9</option>
+    <option>Grade 10</option>
+    <option>Grade 11</option>
+    <option>Grade 12</option>
+
+</select>
+
+<label>Subject</label>
+
+<input
+    type="text"
+    id="subject"
+    placeholder="Example: Mathematics"
+>
+
+<label>Assessment Type</label>
+
+<select id="type">
+
+    <option>Quiz</option>
+    <option>Assignment</option>
+    <option>Mid Exam</option>
+    <option>Final Exam</option>
+    <option>Model Exam</option>
+
+</select>
+
+<label>Mark</label>
+
+<input
+    type="number"
+    id="mark"
+    min="0"
+    max="100"
+    placeholder="Example: 85"
+>
+
+<button onclick="saveResult()">
+    💾 Save Result
+</button>
+
+<div id="message" class="success">
+    Result saved successfully!
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>📋 Saved Results</h2>
+
+<div id="resultsList"></div>
+
+</div>
+
+</div>
+
+
+<script>
+
+const students = {
+
+    ST001:"Example Student",
+
+    ST002:"Abebe Student",
+
+    ST003:"Sara Student"
+
+};
+
+
+function saveResult(){
+
+    const student =
+        document.getElementById("student").value;
+
+    const grade =
+        document.getElementById("grade").value;
+
+    const subject =
+        document.getElementById("subject").value.trim();
+
+    const type =
+        document.getElementById("type").value;
+
+    const mark =
+        document.getElementById("mark").value;
+
+    if(!subject){
+
+        alert("Please enter the subject.");
+
+        return;
+    }
+
+    if(mark === ""){
+
+        alert("Please enter the mark.");
+
+        return;
+    }
+
+    if(mark < 0 || mark > 100){
+
+        alert("Mark must be between 0 and 100.");
+[9/25/2026 2:57 PM] Paulos Bunaro: return;
+    }
+
+    let results =
+        JSON.parse(
+            localStorage.getItem("paulResults")
+        ) || [];
+
+    results.push({
+
+        studentId:student,
+
+        studentName:students[student],
+
+        grade:grade,
+
+        subject:subject,
+
+        type:type,
+
+        mark:Number(mark),
+
+        date:
+            new Date().toLocaleDateString()
+
+    });
+
+    localStorage.setItem(
+        "paulResults",
+        JSON.stringify(results)
+    );
+
+    document.getElementById("message")
+        .style.display="block";
+
+    document.getElementById("subject").value="";
+
+    document.getElementById("mark").value="";
+
+    showResults();
+
+}
+
+
+function showResults(){
+
+    const container =
+        document.getElementById("resultsList");
+
+    const results =
+        JSON.parse(
+            localStorage.getItem("paulResults")
+        ) || [];
+
+    container.innerHTML="";
+
+    if(results.length === 0){
+
+        container.innerHTML=
+            <div class="no-data">
+                No results have been entered yet.
+            </div>
+        ;
+
+        return;
+    }
+
+    results.slice().reverse().forEach(result => {
+
+        container.innerHTML += 
+
+        <div class="result">
+
+            <h3>
+                👨‍🎓 ${result.studentName}
+            </h3>
+
+            <p>
+                <strong>Grade:</strong>
+                ${result.grade}
+            </p>
+
+            <p>
+                <strong>Subject:</strong>
+                ${result.subject}
+            </p>
+
+            <p>
+                <strong>Assessment:</strong>
+                ${result.type}
+            </p>
+
+            <p class="mark">
+                Mark: ${result.mark}/100
+            </p>
+
+            <p>
+                Date: ${result.date}
+            </p>
+
+        </div>
+
+        ;
+
+    });
+
+}
+
+
+showResults();
+
+</script>
+
+</body>
+</html>
