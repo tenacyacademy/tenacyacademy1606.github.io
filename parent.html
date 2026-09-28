@@ -50,18 +50,25 @@
 
     .student {
       background: white;
-      padding: 20px;
+      padding: 25px;
       border-radius: 15px;
       margin-bottom: 25px;
       box-shadow: 0 5px 18px rgba(0,0,0,0.08);
     }
 
     .student h2 {
-      margin-bottom: 8px;
+      margin-bottom: 15px;
     }
 
     .student p {
       color: #667085;
+      margin: 8px 0;
+    }
+
+    .student-name {
+      font-size: 20px;
+      font-weight: bold;
+      color: #061d46 !important;
     }
 
     .cards {
@@ -106,6 +113,14 @@
       border-radius: 8px;
       cursor: pointer;
     }
+
+    .status {
+      margin-top: 15px;
+      padding: 12px;
+      background: #ecfdf3;
+      color: #027a48;
+      border-radius: 8px;
+    }
   </style>
 </head>
 
@@ -124,64 +139,87 @@
       Welcome. Monitor your child's learning progress.
     </p>
 
+    <!-- CHILD INFORMATION -->
     <div class="student">
+
       <h2>👦 My Child</h2>
-      <p>Student Name: Example Student</p>
-      <p>Grade: Grade 8</p>
+
+      <p class="student-name" id="studentName">
+        Example Student
+      </p>
+
+      <p>
+        Student ID:
+        <span id="studentId">
+          b2b594ad-4c1f-499b-ba03-ee57b18359b5
+        </span>
+      </p>
+
+      <p>
+        Grade:
+        <span id="studentGrade">
+          Grade 8
+        </span>
+      </p>
+
+      <div class="status">
+        ✓ Parent and Student are connected.
+      </div>
+
     </div>
 
+    <!-- DASHBOARD CARDS -->
     <div class="cards">
 
-      <div class="card">
+      <div class="card" onclick="openPage('results.html')">
         <div class="icon">📊</div>
         <h3>Results</h3>
         <p>View your child's exam results.</p>
       </div>
 
-      <div class="card">
+      <div class="card" onclick="openPage('attendance.html')">
         <div class="icon">✅</div>
         <h3>Attendance</h3>
         <p>Check your child's attendance.</p>
       </div>
 
-      <div class="card">
+      <div class="card" onclick="openPage('homework.html')">
         <div class="icon">📝</div>
         <h3>Homework</h3>
         <p>See assigned homework.</p>
       </div>
 
-      <div class="card">
+      <div class="card" onclick="openPage('lessons.html')">
         <div class="icon">📚</div>
         <h3>Lessons</h3>
         <p>Access your child's lessons.</p>
       </div>
 
-      <div class="card">
+      <div class="card" onclick="openPage('videos.html')">
         <div class="icon">🎥</div>
         <h3>Videos</h3>
         <p>Watch educational videos.</p>
       </div>
 
-      <div class="card">
+      <div class="card" onclick="openPage('timetable.html')">
         <div class="icon">📅</div>
         <h3>Timetable</h3>
         <p>View your child's class schedule.</p>
       </div>
 
-      <div class="card"
-     onclick="window.location.href='parent-child.html'">
-     <div class="icon">👦</div>
-     <h3>My Child</h3>
-     <p>View your child's information.</p>
-     </div>
-      
-      <div class="card">
+      <div class="card" onclick="openPage('parent-child.html')">
+        <div class="icon">👦</div>
+        <h3>My Child</h3>
+        <p>View your child's information.</p>
+      </div>
+
+      <div class="card" onclick="openPage('messages.html')">
         <div class="icon">💬</div>
         <h3>Messages</h3>
         <p>Communicate with tutors.</p>
       </div>
 
-      <div class="card">
+      <div class="card" onclick="openPage('announcements.html')">
         <div class="icon">📢</div>
         <h3>Announcements</h3>
         <p>View school announcements.</p>
@@ -195,13 +233,18 @@
 
   </div>
 
-<script>
+  <script>
 
-function logout() {
-  window.location.href = "index.html";
-}
+    function openPage(page) {
+      window.location.href = page;
+    }
 
-</script>
+    function logout() {
+      localStorage.removeItem("user");
+      window.location.href = "index.html";
+    }
+
+  </script>
 
 </body>
 </html>
