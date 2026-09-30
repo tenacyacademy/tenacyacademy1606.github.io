@@ -246,5 +246,45 @@
 
   </script>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "https://tbklfbkpgwjtmmhrwdgw.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_DdztCrONUiyZAkuD3aRTkw_9egU_NBz";
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+async function loadMyChild() {
+
+  const {
+    data: { user },
+    error: authError
+  } = await supabaseClient.auth.getUser();
+
+  if (authError || !user) {
+    console.log("Parent is not logged in.");
+    return;
+  }
+
+  const { data, error } = await supabaseClient
+    .from("parent_students")
+    .select("student_id")
+    .eq("parent_id", user.id);
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  console.log("Connected student:", data);
+}
+
+loadMyChild();
+</script>
 </body>
 </html>
