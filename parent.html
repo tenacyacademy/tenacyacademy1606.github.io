@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
   <title>PAUL ACADEMY | Parent Dashboard</title>
 
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -50,7 +58,7 @@
 
     .student {
       background: white;
-      padding: 25px;
+      padding: 20px;
       border-radius: 15px;
       margin-bottom: 25px;
       box-shadow: 0 5px 18px rgba(0,0,0,0.08);
@@ -62,18 +70,28 @@
 
     .student p {
       color: #667085;
-      margin: 8px 0;
+      margin-bottom: 8px;
     }
 
-    .student-name {
-      font-size: 20px;
-      font-weight: bold;
-      color: #061d46 !important;
+    .student strong {
+      color: #172b4d;
+    }
+
+    .status {
+      margin-top: 15px;
+      padding: 10px;
+      background: #ecfdf3;
+      color: #027a48;
+      border-radius: 8px;
+      font-size: 14px;
     }
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(210px, 1fr)
+      );
       gap: 20px;
     }
 
@@ -114,177 +132,563 @@
       cursor: pointer;
     }
 
-    .status {
-      margin-top: 15px;
-      padding: 12px;
-      background: #ecfdf3;
-      color: #027a48;
-      border-radius: 8px;
+    .loading {
+      color: #667085;
+      font-style: italic;
     }
+
   </style>
+
 </head>
 
 <body>
 
+  <!-- NAVBAR -->
   <div class="navbar">
-    <div class="logo">PAUL ACADEMY</div>
-    <div>👨‍👩‍👧 Parent</div>
+
+    <div class="logo">
+      PAUL ACADEMY
+    </div>
+
+    <div>
+      👨‍👩‍👧 Parent
+    </div>
+
   </div>
 
+
+  <!-- MAIN -->
   <div class="container">
 
-    <h1>Parent Dashboard</h1>
+    <h1>
+      Parent Dashboard
+    </h1>
 
     <p class="welcome">
       Welcome. Monitor your child's learning progress.
     </p>
 
-    <!-- CHILD INFORMATION -->
+
+    <!-- MY CHILD -->
     <div class="student">
 
-      <h2>👦 My Child</h2>
+      <h2>
+        👦 My Child
+      </h2>
 
-      <p class="student-name" id="studentName">
-        Example Student
+      <p>
+        Student Name:
+        <strong id="studentName">
+          Loading...
+        </strong>
       </p>
 
       <p>
         Student ID:
         <span id="studentId">
-          b2b594ad-4c1f-499b-ba03-ee57b18359b5
+          Loading...
+        </span>
+      </p>
+
+      <p>
+        Gender:
+        <span id="studentGender">
+          Loading...
         </span>
       </p>
 
       <p>
         Grade:
         <span id="studentGrade">
-          Grade 8
+          Loading...
         </span>
       </p>
 
-      <div class="status">
-        ✓ Parent and Student are connected.
+      <p>
+        Section:
+        <span id="studentSection">
+          Loading...
+        </span>
+      </p>
+
+      <div
+        class="status"
+        id="connectionStatus">
+
+        Connecting to student...
+
       </div>
 
     </div>
+
 
     <!-- DASHBOARD CARDS -->
     <div class="cards">
 
-      <div class="card" onclick="openPage('results.html')">
-        <div class="icon">📊</div>
-        <h3>Results</h3>
-        <p>View your child's exam results.</p>
+
+      <div class="card"
+           onclick="openPage('results.html')">
+
+        <div class="icon">
+          📊
+        </div>
+
+        <h3>
+          Results
+        </h3>
+
+        <p>
+          View your child's exam results.
+        </p>
+
       </div>
 
-      <div class="card" onclick="openPage('attendance.html')">
-        <div class="icon">✅</div>
-        <h3>Attendance</h3>
-        <p>Check your child's attendance.</p>
+
+      <div class="card"
+           onclick="openPage('attendance.html')">
+
+        <div class="icon">
+          ✅
+        </div>
+
+        <h3>
+          Attendance
+        </h3>
+
+        <p>
+          Check your child's attendance.
+        </p>
+
       </div>
 
-      <div class="card" onclick="openPage('homework.html')">
-        <div class="icon">📝</div>
-        <h3>Homework</h3>
-        <p>See assigned homework.</p>
+
+      <div class="card"
+           onclick="openPage('homework.html')">
+
+        <div class="icon">
+          📝
+        </div>
+
+        <h3>
+          Homework
+        </h3>
+
+        <p>
+          See assigned homework.
+        </p>
+
       </div>
 
-      <div class="card" onclick="openPage('lessons.html')">
-        <div class="icon">📚</div>
-        <h3>Lessons</h3>
-        <p>Access your child's lessons.</p>
+
+      <div class="card"
+           onclick="openPage('learning-materials.html')">
+
+        <div class="icon">
+          📚
+        </div>
+
+        <h3>
+          Lessons
+        </h3>
+
+        <p>
+          Access your child's lessons.
+        </p>
+
       </div>
 
-      <div class="card" onclick="openPage('videos.html')">
-        <div class="icon">🎥</div>
-        <h3>Videos</h3>
-        <p>Watch educational videos.</p>
+
+      <div class="card"
+           onclick="openPage('videos.html')">
+
+        <div class="icon">
+          🎥
+        </div>
+
+        <h3>
+          Videos
+        </h3>
+
+        <p>
+          Watch educational videos.
+        </p>
+
       </div>
 
-      <div class="card" onclick="openPage('timetable.html')">
-        <div class="icon">📅</div>
-        <h3>Timetable</h3>
-        <p>View your child's class schedule.</p>
+
+      <div class="card"
+           onclick="openPage('timetable.html')">
+
+        <div class="icon">
+          📅
+        </div>
+
+        <h3>
+          Timetable
+        </h3>
+
+        <p>
+          View your child's class schedule.
+        </p>
+
       </div>
 
-      <div class="card" onclick="openPage('parent-child.html')">
-        <div class="icon">👦</div>
-        <h3>My Child</h3>
-        <p>View your child's information.</p>
+
+      <div class="card"
+           onclick="showChildInfo()">
+
+        <div class="icon">
+          👦
+        </div>
+
+        <h3>
+          My Child
+        </h3>
+
+        <p>
+          View your child's information.
+        </p>
+
       </div>
 
-      <div class="card" onclick="openPage('messages.html')">
-        <div class="icon">💬</div>
-        <h3>Messages</h3>
-        <p>Communicate with tutors.</p>
+
+      <div class="card"
+           onclick="openPage('messages.html')">
+
+        <div class="icon">
+          💬
+        </div>
+
+        <h3>
+          Messages
+        </h3>
+
+        <p>
+          Communicate with tutors.
+        </p>
+
       </div>
 
-      <div class="card" onclick="openPage('announcements.html')">
-        <div class="icon">📢</div>
-        <h3>Announcements</h3>
-        <p>View school announcements.</p>
+
+      <div class="card"
+           onclick="openPage('announcements.html')">
+
+        <div class="icon">
+          📢
+        </div>
+
+        <h3>
+          Announcements
+        </h3>
+
+        <p>
+          View school announcements.
+        </p>
+
       </div>
+
 
     </div>
 
-    <button class="logout" onclick="logout()">
+
+    <!-- LOGOUT -->
+    <button
+      class="logout"
+      onclick="logout()">
+
       Logout
+
     </button>
 
   </div>
 
+
+  <!-- JAVASCRIPT -->
   <script>
 
-    function openPage(page) {
-      window.location.href = page;
+    /* =========================
+       SUPABASE CONFIGURATION
+       ========================= */
+
+    const SUPABASE_URL =
+      "https://tbklfbkpgwjtmmhrwdgw.supabase.co";
+
+    const SUPABASE_KEY =
+      "sb_publishable_DdztCrONUiyZAkuD3aRTkw_9egU_NBz";
+
+
+    const supabaseClient =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
+
+
+    /* =========================
+       LOAD CHILD
+       ========================= */
+
+    async function loadMyChild() {
+
+      try {
+
+        /*
+         Get logged-in parent
+        */
+
+        const {
+          data: { user },
+          error: authError
+        } =
+          await supabaseClient.auth.getUser();
+
+
+        if (authError) {
+
+          console.error(
+            "Authentication error:",
+            authError
+          );
+
+          document.getElementById(
+            "connectionStatus"
+          ).textContent =
+            "Authentication error.";
+
+          return;
+        }
+
+
+        if (!user) {
+
+          console.log(
+            "Parent is not logged in."
+          );
+
+          document.getElementById(
+            "connectionStatus"
+          ).textContent =
+            "Please login as Parent first.";
+
+          return;
+        }
+
+
+        console.log(
+          "Logged-in parent:",
+          user.id
+        );
+
+
+        /*
+         Find student connected
+         to this parent
+        */
+
+        const {
+          data: linkData,
+          error: linkError
+        } =
+          await supabaseClient
+            .from("parent_students")
+            .select("student_id")
+            .eq("parent_id", user.id)
+            .single();
+
+
+        if (linkError) {
+
+          console.error(
+            "Parent-Student connection error:",
+            linkError
+          );
+
+          document.getElementById(
+            "connectionStatus"
+          ).textContent =
+            "Student connection not found.";
+
+          return;
+        }
+
+
+        if (!linkData) {
+
+          document.getElementById(
+            "connectionStatus"
+          ).textContent =
+            "No student connected to this parent.";
+
+          return;
+        }
+
+
+        console.log(
+          "Connected student ID:",
+          linkData.student_id
+        );
+
+
+        /*
+         Get student information
+        */
+
+        const {
+          data: student,
+          error: studentError
+        } =
+          await supabaseClient
+            .from("students")
+            .select(
+              "student_id, full_name, gender, grade, section"
+            )
+            .eq(
+              "student_id",
+              linkData.student_id
+            )
+            .single();
+
+
+        if (studentError) {
+
+          console.error(
+            "Student data error:",
+            studentError
+          );
+
+          document.getElementById(
+            "connectionStatus"
+          ).textContent =
+            "Student information could not be loaded.";
+
+          return;
+        }
+
+
+        if (!student) {
+
+          document.getElementById(
+            "connectionStatus"
+          ).textContent =
+            "Student not found.";
+
+          return;
+        }
+
+
+        /*
+         Display student information
+        */
+
+        document.getElementById(
+          "studentName"
+        ).textContent =
+          student.full_name || "Unknown Student";
+
+
+        document.getElementById(
+          "studentId"
+        ).textContent =
+          student.student_id || "";
+
+
+        document.getElementById(
+          "studentGender"
+        ).textContent =
+          student.gender || "";
+
+
+        document.getElementById(
+          "studentGrade"
+        ).textContent =
+          student.grade || "";
+
+
+        document.getElementById(
+          "studentSection"
+        ).textContent =
+          student.section || "";
+
+
+        document.getElementById(
+          "connectionStatus"
+        ).textContent =
+          "✓ Parent and Student are connected.";
+
+
+        console.log(
+          "Child loaded successfully:",
+          student
+        );
+
+      }
+
+      catch (error) {
+
+        console.error(
+          "Unexpected error:",
+          error
+        );
+
+        document.getElementById(
+          "connectionStatus"
+        ).textContent =
+          "Something went wrong.";
+
+      }
+
     }
 
-    function logout() {
-      localStorage.removeItem("user");
-      window.location.href = "index.html";
+
+    /* =========================
+       OPEN DASHBOARD PAGES
+       ========================= */
+
+    function openPage(page) {
+
+      window.location.href = page;
+
     }
+
+
+    /* =========================
+       SHOW CHILD INFORMATION
+       ========================= */
+
+    function showChildInfo() {
+
+      document.querySelector(
+        ".student"
+      ).scrollIntoView({
+        behavior: "smooth"
+      });
+
+    }
+
+
+    /* =========================
+       LOGOUT
+       ========================= */
+
+    async function logout() {
+
+      await supabaseClient.auth.signOut();
+
+      window.location.href =
+        "index.html";
+
+    }
+
+
+    /* =========================
+       START
+       ========================= */
+
+    loadMyChild();
 
   </script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<script>
-const SUPABASE_URL = "https://tbklfbkpgwjtmmhrwdgw.supabase.co";
-
-const SUPABASE_KEY =
-"sb_publishable_DdztCrONUiyZAkuD3aRTkw_9egU_NBz";
-
-const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
-
-async function loadMyChild() {
-
-  const {
-    data: { user },
-    error: authError
-  } = await supabaseClient.auth.getUser();
-
-  if (authError || !user) {
-    console.log("Parent is not logged in.");
-    return;
-  }
-
-  const { data, error } = await supabaseClient
-    .from("parent_students")
-    .select("student_id")
-    .eq("parent_id", user.id);
-
-  if (error) {
-    console.error(error);
-    return;
-  }
-
-  console.log("Connected student:", data);
-}
-
-loadMyChild();
-</script>
 </body>
+
 </html>
