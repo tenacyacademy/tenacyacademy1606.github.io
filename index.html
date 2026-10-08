@@ -151,70 +151,95 @@
 
   </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
+const SUPABASE_URL = "https://tbklfbkpgwjtmmhrwdgw.supabase.co";
 
-document.getElementById("loginForm").addEventListener("submit", function(event) {
+const SUPABASE_KEY =
+  "sb_publishable_DdztCrONUiyZAkuD3aRTkw_9egU_NBz";
 
-  event.preventDefault();
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 
-  const username =
-    document.getElementById("username").value.trim();
+document.getElementById("loginForm").addEventListener(
+  "submit",
+  async function(event) {
+    event.preventDefault();
 
-  const password =
-    document.getElementById("password").value;
+    const email = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value;
+    const selectedRole = document.getElementById("role").value;
+    const message = document.getElementById("message");
 
-  const role =
-    document.getElementById("role").value;
+    message.textContent = "Logging in...";
+    message.style.color = "blue";
 
-  if (
-    username === "admin" &&
-    password === "1234" &&
-    role === "admin"
-  ) {
+    try {
+      const { data, error } =
+        await supabaseClient.auth.signInWithPassword({
+          email: email,
+          password: password
+        });
 
-    window.location.href = "admin.html";
+      if (error) {
+        throw new Error("Email or password is incorrect.");
+      }
 
+      const user = data.user;
+
+      const { data: roleData, error: roleError } =
+        await supabaseClient
+          .from("user_roles")
+          .select("role")
+          .eq("user_id", user.id)
+          .maybeSingle();
+
+      if (roleError) {
+        throw new Error(
+          "Could not verify your role. Please try again."
+        );
+      }
+
+      if (!roleData) {
+        await supabaseClient.auth.signOut();
+        throw new Error("Your account has no assigned role.");
+      }
+
+      const actualRole = roleData.role;
+
+      const expectedRole =
+        selectedRole === "tutor" ? "teacher" : selectedRole;
+
+      if (actualRole !== expectedRole) {
+        await supabaseClient.auth.signOut();
+        throw new Error("The selected role does not match your account.");
+      }
+
+      const pages = {
+        admin: "admin.html",
+        teacher: "tutor.html",
+        parent: "parent.html",
+        student: "student.html"
+      };
+
+      const destination = pages[actualRole];
+
+      if (!destination) {
+        await supabaseClient.auth.signOut();
+        throw new Error("No dashboard is configured for this role.");
+      }
+
+      window.location.href = destination;
+
+    } catch (error) {
+      message.textContent = "❌ " + error.message;
+      message.style.color = "red";
+    }
   }
-
-  else if (
-    username === "tutor" &&
-    password === "1234" &&
-    role === "tutor"
-  ) {
-
-    window.location.href = "tutor.html";
-
-  }
-
-  else if (
-    username === "parent" &&
-    password === "1234" &&
-    role === "parent"
-  ) {
-
-    window.location.href = "parent.html";
-
-  }
-
-    else if (
-  username === "student" &&
-  password === "1234" &&
-  role === "student"
-) {
-
-  window.location.href = "student.html";
-
-}
-
-  else {
-
-    document.getElementById("message").innerHTML =
-      "❌ Username, password or role is incorrect.";
-
-  }
-
-});
-
+);
 </script>
 
 </body>
